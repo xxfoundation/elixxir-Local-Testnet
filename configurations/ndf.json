@@ -36,7 +36,7 @@
 	],
 	"registration": {
 		"Dsa_public_key": "",
-		"Address": "registration.default.cmix.rip",
+		"Address": "0.0.0.0:18000",
 		"Tls_certificate": ""
 	},
 	"udb": {
