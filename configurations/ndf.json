@@ -6,11 +6,11 @@
 			"Tls_certificate": ""
 		},
 		{
-			"Address": "52.25.219.38",
+			"Address": "0.0.0.0:8300",
 			"Tls_certificate": ""
 		},
 		{
-			"Address": "52.41.80.104",
+			"Address": "0.0.0.0:8300",
 			"Tls_certificate": ""
 		}
 	],
