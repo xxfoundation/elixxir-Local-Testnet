@@ -1,0 +1,6 @@
+# Ignore Jetbrains IDE folder
+.idea/*
+# Ignore binaries
+*.binary
+# Ignore logs
+*.log

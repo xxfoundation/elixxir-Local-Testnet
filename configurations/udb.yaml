@@ -1,0 +1,4 @@
+# Path where UDB will store its logs
+logPath: "udb.log"
+# Path where UDB will store session file
+sessionfile: "udb.session"
