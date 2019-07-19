@@ -18,4 +18,22 @@ CONFIG_PATH="$(pwd)/configurations"
 "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-3.yaml" -i 2 &
 
 "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yaml" \
--n "$CONFIG_PATH/ndf.json"
+-n "$CONFIG_PATH/ndf.json" &
+
+# Pipe child PIDs into file
+jobs -p > pids.tmp
+
+finish() {
+    # Read in and kill all child PIDs
+    for job in $(cat pids.tmp)
+    do
+        echo "KILLING $job"
+        kill "$job" || true
+    done
+}
+
+# Execute finish function on exit
+trap finish EXIT
+
+# Wait until user input to exit
+read -p 'Press enter to exit...'

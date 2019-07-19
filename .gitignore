@@ -4,3 +4,7 @@
 *.binary
 # Ignore logs
 *.log
+# Ignore session
+*.session
+# Ignore tmp files
+*.tmp
