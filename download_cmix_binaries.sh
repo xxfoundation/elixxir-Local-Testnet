@@ -36,6 +36,9 @@ curl -s -f -L -H "PRIVATE-TOKEN: $PATKEY" -o "$download_path/gateway.binary" ${G
 # Silently download the permissioning binary to the provisioning directory
 curl -s -f -L -H "PRIVATE-TOKEN: $PATKEY" -o "$download_path/permissioning.binary" ${PERMISSIONING_URL}
 
+# Make binaries executable
+chmod +x "$download_path"/*.binary
+
 file "$download_path"/*
 
 echo "If you see HTML or anything but linux binaries above, something is messed up!"
