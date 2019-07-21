@@ -6,7 +6,7 @@ node:
   paths:
     cert: ""
     key:  ""
-    log:  "server-1.log"
+    log:  "server-3.log"
   addresses:
     - "0.0.0.0:11200"
     - "0.0.0.0:11300"
