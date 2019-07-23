@@ -35,7 +35,7 @@
 		}
 	],
 	"registration": {
-		"Dsa_public_key": "",
+		"Dsa_public_key": "-----BEGIN PUBLIC KEY-----\nMIIDNDCCAiwCggEBAJ22+1lRtmu2/h4UDx0s5VAjdBYf1lON8WSCGGQvC1xIyPek\nGq36GHMkuHZ0+hgisA8ez4E2lD18VXVyZOWhpE/+AS6ZNuAMHT6TELAcfReYBdMF\niyqfS7b5cWv+YRfGtbPMTZvjQRBK1KgK1slOAF9LmT4U8JHrUXQ78zBQw43iNVZ+\nGzTD1qXAzqoaDzaCE8PRmEPQtLCdy5/HLTnI3kHxvxTUu0Vjyig3FiHK0zJLai05\nIUW+v6x0iAUjb1yi/pK4cc2PnDbTKStVCcqMqneirfx7/XfdpvcRJadFb+oVPkMy\nVqImHGoG7TaTeX55lfrVqrvPvj7aJ0HjdUBK4lsCIQDywxGTdM52yTVpkLRlN0oX\n8j+e01CJvZafYcbd6ZmMHwKCAQBcf/awb48UP+gohDNJPkdpxNmIrOW+JaDiSAln\nBxbGE9ewzuaTL4+qfETSyyRSPaU/vk9uw1lYktGqWMQyigbEahVmLn6qcDod7Pi7\nstBdvi65VsFCozhmHRBGHA0TVHIIUFfzSUMJ/6c8YR94syrbtXQMNhyfNb6QmX2y\nAU4u9apheC9Sq+uL1kMsTdCXvFQjsoXa+2DcNk6BYfSio1rKOhCxxNIDzHakcKM6\n/cvdkpWYWavYtW4XJSUteOrGbnG6muPx3SSHGZh0OTzU2DIYaABlR2Dh40wJ5NFV\nF5+ewNxEc/mWvc5u7Ryr7YtvEW962c9QXfD5mONKsnUUsP/nAoIBAEDOApai3bhs\nC3Bq52WT0O23ieyMs5kOTyIi07/ssZy4mifylhjXe7a4tRBsU4xa37n8gfaMFYt8\n9yxfvQ9cgny4VxU0RvqO58NA6QQS5j3utQhzPGwkudJ1OGbiv9VD5fRgClXRAekM\n566lrcJAY8BKGhSShw5ihh0xq6aitENo+UIPM8MO7sfwGXGEqr0KZQCotaebTDkj\nZ8FMz2pCVzO8QPwf6z+VJor6kCXJK2mljHGxOHblMeLW/eri2rB3j92sI1GuB1fP\n/+f9wIa7t61xk1H8dw1ZZkAXIdfNW+R2TktvWBYQHnjIgtzcgN4c39piCyH3Ho7R\nCaz3nlw2QRI=\n-----END PUBLIC KEY-----",
 		"Address": "0.0.0.0:18000",
 		"Tls_certificate": ""
 	},
