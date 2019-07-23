@@ -2,20 +2,28 @@
 
 set -x
 
+# Get platform parameter
+if [[ $1 == "l" ]] ||[[ $1 == "linux" ]] || [[ -z $1 ]]
+then
+    BIN=".linux64?job=build"
+elif [[ $1 == "m" ]] || [[ $1 == "mac" ]]
+then
+    BIN=".darwin64?job=build"
+else
+    echo "Invalid platform argument: $1"
+    exit 0
+fi
+
 # Set up the URL for downloading the binaries
 PRIVATEGRITY_REPOS="https://gitlab.com/api/v4/projects/elixxir%2F"
 MASTER_URL_FRAG="jobs/artifacts/master/raw/release"
 DISPATCH_URL_FRAG="jobs/artifacts/dispatch/raw/release"
 
-# Platform variables
-LINUX_BIN=".linux64?job=build"
-MAC_BIN=".darwin64?job=build"
-
 # Get URLs for artifacts from all relevant repos
-UDB_URL="${PRIVATEGRITY_REPOS}user-discovery-bot/$DISPATCH_URL_FRAG/udb$MAC_BIN"
-SERVER_URL="${PRIVATEGRITY_REPOS}server/$DISPATCH_URL_FRAG/server$MAC_BIN"
-GW_URL="${PRIVATEGRITY_REPOS}gateway/$DISPATCH_URL_FRAG/gateway$MAC_BIN"
-PERMISSIONING_URL="${PRIVATEGRITY_REPOS}registration/$MASTER_URL_FRAG/registration$MAC_BIN"
+UDB_URL="${PRIVATEGRITY_REPOS}user-discovery-bot/$DISPATCH_URL_FRAG/udb$BIN"
+SERVER_URL="${PRIVATEGRITY_REPOS}server/$DISPATCH_URL_FRAG/server$BIN"
+GW_URL="${PRIVATEGRITY_REPOS}gateway/$DISPATCH_URL_FRAG/gateway$BIN"
+PERMISSIONING_URL="${PRIVATEGRITY_REPOS}registration/$MASTER_URL_FRAG/registration$BIN"
 
 # Set up the gitlab access token
 PATKEY="rBxQ6BvKP-eFxxeM3Ugm"
