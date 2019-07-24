@@ -1,27 +1,62 @@
 #!/usr/bin/env bash
 
+# Get parameter on which binaries to NOT run
+for arg in "$@"
+do
+    case ${arg} in
+        "p" | "permissioning")
+            runPermissioning="false"
+            ;;
+        "s" | "server")
+            runServer="false"
+            ;;
+        "g" | "gateway")
+            runGateway="false"
+            ;;
+        "u" | "udb")
+            runUDB="false"
+            ;;
+    esac
+done
+
 BIN_PATH="$(pwd)/binaries"
 CONFIG_PATH="$(pwd)/configurations"
 
-"$BIN_PATH"/permissioning.binary -c "$CONFIG_PATH/permissioning.yaml" \
--k "$CONFIG_PATH/dsa.json" &
+if [[ -z ${runPermissioning} ]]; then
+    "$BIN_PATH"/permissioning.binary -c "$CONFIG_PATH/permissioning.yaml" \
+    -k "$CONFIG_PATH/dsa.json" &
+else
+    echo "Skipping execution of permissioning binary."
+fi
 
-"$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-1.yaml" -i 0 \
---keyPairOverride "$CONFIG_PATH/dsa.json" &
-"$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-2.yaml" -i 1 \
---keyPairOverride "$CONFIG_PATH/dsa.json" &
-"$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-3.yaml" -i 2 \
---keyPairOverride "$CONFIG_PATH/dsa.json" &
+if [[ -z ${runServer} ]]; then
+    "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-1.yaml" -i 0 \
+    --keyPairOverride "$CONFIG_PATH/dsa.json" &
+    "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-2.yaml" -i 1 \
+    --keyPairOverride "$CONFIG_PATH/dsa.json" &
+    "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-3.yaml" -i 2 \
+    --keyPairOverride "$CONFIG_PATH/dsa.json" &
+else
+    echo "Skipping execution of server binary."
+fi
 
-"$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-1.yaml" -i 0 &
-"$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-2.yaml" -i 1 &
-"$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-3.yaml" -i 2 &
+if [[ -z ${runGateway} ]]; then
+    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-1.yaml" -i 0 &
+    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-2.yaml" -i 1 &
+    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-3.yaml" -i 2 &
+else
+    echo "Skipping execution of gateway binary."
+fi
 
-"$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yaml" \
--n "$CONFIG_PATH/ndf.json" &
+if [[ -z ${runUDB} ]]; then
+    "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yaml" \
+    -n "$CONFIG_PATH/ndf.json" &
+else
+    echo "Skipping execution of UDB binary."
+fi
 
 # Pipe child PIDs into file
-jobs -p > pids.tmp
+jobs -p > "pids.tmp"
 
 finish() {
     # Read in and kill all child PIDs
