@@ -3,12 +3,12 @@
 set -x
 
 # Get platform parameter
-if [[ $1 == "l" ]] ||[[ $1 == "linux" ]] || [[ -z $1 ]]
-then
+if [[ $1 == "l" ]] ||[[ $1 == "linux" ]] || [[ -z $1 ]]; then
     BIN=".linux64?job=build"
-elif [[ $1 == "m" ]] || [[ $1 == "mac" ]]
-then
+    echo "Platform set to Linux"
+elif [[ $1 == "m" ]] || [[ $1 == "mac" ]]; then
     BIN=".darwin64?job=build"
+    echo "Platform set to Mac"
 else
     echo "Invalid platform argument: $1"
     exit 0
