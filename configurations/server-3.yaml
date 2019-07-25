@@ -1,6 +1,6 @@
 # START YAML ===
 batch: 2
-verbose: true
+verbose: false
 node:
   id: ""
   paths:
