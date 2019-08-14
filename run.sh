@@ -56,8 +56,7 @@ else
 fi
 
 if [[ -z ${runUDB} ]]; then
-    "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yaml" \
-               -n "$CONFIG_PATH/ndf.json" &
+    "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yaml" &
     echo "UDB: " $!
 
 else
