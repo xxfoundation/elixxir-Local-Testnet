@@ -4,8 +4,8 @@ verbose: false
 node:
   id: ""
   paths:
-    cert: ""
-    key:  ""
+    cert: "server-3.rip.crt"
+    key:  "server-3.rip.key"
     log:  "server-3.log"
   addresses:
     - "0.0.0.0:11200"
