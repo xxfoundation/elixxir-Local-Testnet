@@ -39,8 +39,8 @@ batchSize: 2
 
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the gateway private key file
-keyPath: "gateway-1.rip.key"
+keyPath: "tlsCerts/gateway-1.rip.key"
 # Path to the gateway certificate file
-certPath: "gateway-1.rip.crt"
+certPath: "tlsCerts/gateway-1.rip.crt"
 # Path to the gateway certificate file
-serverCertPath: ""
+serverCertPath: "tlsCerts/server-1.rip.crt"

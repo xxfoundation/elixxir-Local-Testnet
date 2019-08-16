@@ -43,4 +43,4 @@ keyPath: "gateway-2.rip.key"
 # Path to the gateway certificate file
 certPath: "gateway-2.rip.crt"
 # Path to the gateway certificate file
-serverCertPath: ""
+serverCertPath: "tlsCerts/server-2.rip.crt"
