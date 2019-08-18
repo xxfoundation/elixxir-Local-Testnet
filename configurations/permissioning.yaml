@@ -22,6 +22,6 @@ registrationCodes:
 
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the registration server private key file
-keyPath: "tlsCerts/permissioning.rip.key"
+keyPath: "configurations/tlsCerts/permissioning.rip.key"
 # Path to the registration server certificate file
-certPath: "tlsCerts/permissioning.rip.crt"
+certPath: "configurations/tlsCerts/permissioning.rip.crt"
