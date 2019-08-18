@@ -16,7 +16,7 @@ fi
 
 # Set up the URL for downloading the binaries
 PRIVATEGRITY_REPOS="https://gitlab.com/api/v4/projects/elixxir%2F"
-MASTER_URL_FRAG="jobs/artifacts/RSARegistration/raw/release"
+MASTER_URL_FRAG="jobs/artifacts/master/raw/release"
 
 # Get URLs for artifacts from all relevant repos
 UDB_URL="${PRIVATEGRITY_REPOS}user-discovery-bot/$MASTER_URL_FRAG/udb$BIN"
