@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-noTls=""
+noTls="--noTLS"
 
 # Get parameter on which binaries to NOT run
 for arg in "$@"
@@ -19,7 +19,7 @@ do
             runUDB="false"
             ;;
         "noTLS" | "notls")
-            noTLS="--noTLS"
+            noTLS=""
     esac
 done
 
