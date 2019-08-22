@@ -1,5 +1,5 @@
 # START YAML ===
-batch: 1000
+batch: 32
 verbose: false
 node:
   id: ""
