@@ -36,13 +36,13 @@ fi
 
 if [[ -z ${runServer} ]]; then
     "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-1.yaml" -i 0 \
-     --disablePermissioning ${noTls} &
+     --disablePermissioning --metricsWhitespace ${noTls} &
     echo "Server 1: " $!
     "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-2.yaml" -i 1 \
-    --disablePermissioning ${noTls} &
+    --disablePermissioning --metricsWhitespace ${noTls} &
      echo "Server 2: " $!
     "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-3.yaml" -i 2 \
-    --disablePermissioning ${noTls} &
+    --disablePermissioning --metricsWhitespace ${noTls} &
     echo "Server 3: " $!
 else
     echo "Skipping execution of server binary."
