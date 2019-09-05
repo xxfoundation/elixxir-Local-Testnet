@@ -28,7 +28,7 @@ CONFIG_PATH="$(pwd)/configurations"
 
 if [[ -z ${runPermissioning} ]]; then
     "$BIN_PATH"/permissioning.binary -c "$CONFIG_PATH/permissioning.yaml" \
-                ${noTls} -v &
+                ${noTls} -v --InsecureClientRegCode "AAAA" &
     echo "Permissioning: " $!
 else
     echo "Skipping execution of permissioning binary."
@@ -60,7 +60,7 @@ else
 fi
 
 if [[ -z ${runUDB} ]]; then
-    "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yaml" ${noTls} &
+    "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yaml" ${noTls} -v &
     echo "UDB: " $!
 
 else
