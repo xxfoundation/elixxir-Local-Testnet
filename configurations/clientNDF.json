@@ -1,0 +1,45 @@
+{
+  "Timestamp": "2019-09-25T10:03:23.376136803-07:00",
+  "Gateways": [
+    {
+      "Address": "",
+      "Tls_certificate": ""
+    },
+    {
+      "Address": "",
+      "Tls_certificate": ""
+    },
+    {
+      "Address": "",
+      "Tls_certificate": ""
+    }
+  ],
+  "Nodes": [
+    {
+      "Id": ""
+    },
+    {
+      "Id": ""
+    },
+    {
+      "Id": ""
+    }
+  ],
+  "Registration": {
+    "Address": "0.0.0.0:18000",
+    "Tls_certificate": "-----BEGIN CERTIFICATE-----\nMIIGHTCCBAWgAwIBAgIUAj6vxRwTu16wVQGBb3lqo5vQo4gwDQYJKoZIhvcNAQEL\nBQAwgZIxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTESMBAGA1UEBwwJQ2xhcmVt\nb250MRAwDgYDVQQKDAdFbGl4eGlyMRQwEgYDVQQLDAtEZXZlbG9wbWVudDEZMBcG\nA1UEAwwQZ2F0ZXdheS5jbWl4LnJpcDEfMB0GCSqGSIb3DQEJARYQYWRtaW5AZWxp\neHhpci5pbzAeFw0xOTA4MTYwMDQ5MDBaFw0yMDA4MTUwMDQ5MDBaMIGSMQswCQYD\nVQQGEwJVUzELMAkGA1UECAwCQ0ExEjAQBgNVBAcMCUNsYXJlbW9udDEQMA4GA1UE\nCgwHRWxpeHhpcjEUMBIGA1UECwwLRGV2ZWxvcG1lbnQxGTAXBgNVBAMMEGdhdGV3\nYXkuY21peC5yaXAxHzAdBgkqhkiG9w0BCQEWEGFkbWluQGVsaXh4aXIuaW8wggIi\nMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCrfJyqwVp2Wz6yFlmPtHBdXffU\nE1qAkVgZJ1GfErYfO/9wHMYfkihjib9ZFRsOBsIdNEK9Pp/nVJAHserTLEAwXpvB\n1EeTXyR/MTh8tVjQuX6RVIiU2gTIKVjZcUs7BaLBLhYXQ8XpjiUTBltqHa1pj7iU\n16941i8TxkR0KM90aXfKZBpcJdf0+hc2K1FPVYrtMsuEhOA3cODvpIU4jRejFSFK\nJeNwaSw9Y0xf/qTLBz5+ddiSw+3x3AwLuuwTzPVTGdKe57dOVzwq8N7KTzYprksZ\ngCdEFVeGLy0WahSVYl7IGfzQFHX4J3rrvd5zU/VnL57eqDpB7h57pyle1roWNToR\nCOgSn9euSP+Jcq8Pg20i63djDDaL004U41FNTccnpSEIkd6f74h2LqY64Y1AtMbd\nozAW5d6EjWAGh0tZXc3aHh8pMBqJ9g/PAFdwCTAn2Q9gmI6NzoIuF4DFjka0Gxrk\nFyp+f2ijOYmiDwx/ppMnKU4FnTim4FNUT6hKzdob4AvKXhOMEHNeAoA33h6AvuYc\nyHaBaOF2pFlNG+3QZNovw40gALse1/ydRHWqGo1g4B9boXXp2Xq3gcVqEShVMJNJ\neXKEOHQ8DsFncAr77jCN9qEICSUyICZDl/KVlRSe54i4VJ+6Noa9S8XmAfzAlsBA\ndRogFbLHAu45iXipzwIDAQABo2kwZzAdBgNVHQ4EFgQUjy68bwAmyuO9WoizD8Gb\nc45oJicwHwYDVR0jBBgwFoAUjy68bwAmyuO9WoizD8Gbc45oJicwDwYDVR0TAQH/\nBAUwAwEB/zAUBgNVHREEDTALgglmb28uY28udWswDQYJKoZIhvcNAQELBQADggIB\nADDuVPigfBbhiZ7mDyU9n+gckkAgubPMgShZSKRsvr2MapD0cmvzQs36SGJ5Wic4\nmvImDC+BGZn0ucXFrcRMB88XVo5HlHHb+ISz5F0DU95i8y2q/kF+BR9ZANL9MkB4\nlr/xTJ8X+Xs8b2TIW+s+2JWHJQWArygqflmdHXBrfov6KtcD88kyBR65HH1ZC+RG\nmphv/ncpIUM8Dm3LZfrb5Ps75vGk6cR83i6kr9anwzHIGC6icLfmEAuSLnhhmogd\nuwaX1mOXUrbci2013IASA1G7rx9fTlepW8KZHKmCrXOuIj/2opKRMuTG1hdFJXU9\nuOu6Munuj1pKpiowa2zbgle0lYn+HCErMwjrEj1QQLvRunx97hLApyRuiOD1J4nE\nqbS5Fa2nL2Yi5Ok+7VH11PndZIaTSZThE6KOt3FMlolnsXSFpk1pdf0xuQejijFP\npMFnuqUGMssMKrzlsLPwPYJvU6Jn5bPrNQ64l98LV4Lm9PbCLFyMv8jy3Mohn25D\n6UzIKGElTtHw46SHFcWVbbQaP8TBs0NtApn07JcYovegQ75y75MYb4SC6xihdPEU\nNg+GbCuxEd++gse8gpj2FxcquW2ihxCIzmy9j0VHzyjVsb5ukyu7ZhrIyiqHyIMW\nLLTNlxHR+G7aCThWUGgAPoazmMRvBjakG7/WCQmDpqw2\n-----END CERTIFICATE-----\n"
+  },
+  "Udb": {
+    "Id": "="
+  },
+  "E2e": {
+    "Prime": "",
+    "Small_prime": "",
+    "Generator": ""
+  },
+  "Cmix": {
+    "Prime": "",
+    "Small_prime": "",
+    "Generator": ""
+  }
+}
