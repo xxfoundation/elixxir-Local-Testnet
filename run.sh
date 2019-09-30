@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 noTls=""
-
+rm *.log
 # Get parameter on which binaries to NOT run
 for arg in "$@"
 do
@@ -36,24 +36,24 @@ fi
 
 if [[ -z ${runServer} ]]; then
     "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-1.yaml" -i 0 \
-     --disablePermissioning --metricsWhitespace ${noTls} &
+      --metricsWhitespace ${noTls} &
     echo "Server 1: " $!
     "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-2.yaml" -i 1 \
-    --disablePermissioning --metricsWhitespace ${noTls} &
+     --metricsWhitespace ${noTls} &
      echo "Server 2: " $!
     "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-3.yaml" -i 2 \
-    --disablePermissioning --metricsWhitespace ${noTls} &
+     --metricsWhitespace ${noTls} &
     echo "Server 3: " $!
 else
     echo "Skipping execution of server binary."
 fi
 
 if [[ -z ${runGateway} ]]; then
-    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-1.yaml" -i 0 -v --disablePermissioning  ${noTls} &
+    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-1.yaml" -i 0 -v  ${noTls} &
     echo "Gateway 1: " $!
-    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-2.yaml" -i 1 -v --disablePermissioning  ${noTls} &
+    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-2.yaml" -i 1 -v  ${noTls} &
     echo "Gateway 2: " $!
-    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-3.yaml" -i 2 -v --disablePermissioning  ${noTls} &
+    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-3.yaml" -i 2 -v  ${noTls} &
     echo "Gateway 3: " $!
 else
     echo "Skipping execution of gateway binary."
