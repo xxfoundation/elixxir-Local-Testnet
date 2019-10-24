@@ -20,6 +20,7 @@ dbAddress: ""
 registrationCodes:
   - ""
 
+# List of client codes to be added to the database (for testing)
 clientRegCodes:
   - ""
 
