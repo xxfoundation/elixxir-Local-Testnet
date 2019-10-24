@@ -20,6 +20,9 @@ dbAddress: ""
 registrationCodes:
   - ""
 
+clientRegCodes:
+  - ""
+
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the registration server private key file
 keyPath: "configurations/tlsCerts/permissioning.rip.key"
