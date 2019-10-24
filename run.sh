@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 noTls=""
+disablePermissioning=""
 rm *.log
 # Get parameter on which binaries to NOT run
 for arg in "$@"
@@ -20,6 +21,9 @@ do
             ;;
         "noTLS" | "notls")
             noTls="--noTLS"
+            ;;
+        "disablePermissioning")
+            disablePermissioning="--disablePermissioning"
     esac
 done
 
@@ -28,7 +32,7 @@ CONFIG_PATH="$(pwd)/configurations"
 
 if [[ -z ${runPermissioning} ]]; then
     "$BIN_PATH"/permissioning.binary -c "$CONFIG_PATH/permissioning.yaml" \
-                ${noTls} -v --InsecureClientRegCode "AAAA" &
+                ${noTls} -v ${disablePermissioning} --InsecureClientRegCode "AAAA" &
     echo "Permissioning: " $!
 else
     echo "Skipping execution of permissioning binary."
@@ -36,24 +40,24 @@ fi
 
 if [[ -z ${runServer} ]]; then
     "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-1.yaml" -i 0 \
-      --metricsWhitespace ${noTls} &
+      --metricsWhitespace ${noTls} ${disablePermissioning} &
     echo "Server 1: " $!
     "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-2.yaml" -i 1 \
-     --metricsWhitespace ${noTls} &
+     --metricsWhitespace ${noTls} ${disablePermissioning} &
      echo "Server 2: " $!
     "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-3.yaml" -i 2 \
-     --metricsWhitespace ${noTls} &
+     --metricsWhitespace ${noTls} ${disablePermissioning} &
     echo "Server 3: " $!
 else
     echo "Skipping execution of server binary."
 fi
 
 if [[ -z ${runGateway} ]]; then
-    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-1.yaml" -i 0 -v  ${noTls} &
+    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-1.yaml" -i 0 -v  ${noTls} ${disablePermissioning} &
     echo "Gateway 1: " $!
-    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-2.yaml" -i 1 -v  ${noTls} &
+    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-2.yaml" -i 1 -v  ${noTls} ${disablePermissioning} &
     echo "Gateway 2: " $!
-    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-3.yaml" -i 2 -v  ${noTls} &
+    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-3.yaml" -i 2 -v  ${noTls} ${disablePermissioning} &
     echo "Gateway 3: " $!
 else
     echo "Skipping execution of gateway binary."
