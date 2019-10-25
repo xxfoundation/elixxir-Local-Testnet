@@ -22,7 +22,7 @@ registrationCodes:
 
 # List of client codes to be added to the database (for testing)
 clientRegCodes:
-  - ""
+  - "AAAA"
 
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the registration server private key file
