@@ -2,7 +2,6 @@
 
 noTls=""
 disablePermissioning=""
-rm *.log
 # Get parameter on which binaries to NOT run
 for arg in "$@"
 do
@@ -24,6 +23,7 @@ do
             ;;
         "disablePermissioning")
             disablePermissioning="--disablePermissioning"
+            ;;
     esac
 done
 
@@ -32,7 +32,7 @@ CONFIG_PATH="$(pwd)/configurations"
 
 if [[ -z ${runPermissioning} ]]; then
     "$BIN_PATH"/permissioning.binary -c "$CONFIG_PATH/permissioning.yaml" \
-                ${noTls} -v ${disablePermissioning} --InsecureClientRegCode "AAAA" &
+                ${noTls} -v ${disablePermissioning} &
     echo "Permissioning: " $!
 else
     echo "Skipping execution of permissioning binary."
