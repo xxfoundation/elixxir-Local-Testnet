@@ -28,7 +28,7 @@ CONFIG_PATH="$(pwd)/configurations"
 
 if [[ -z ${runPermissioning} ]]; then
     "$BIN_PATH"/permissioning.binary -c "$CONFIG_PATH/permissioning.yaml" \
-                ${noTls} -v --InsecureClientRegCode "AAAA" &
+                ${noTls} -v &
     echo "Permissioning: " $!
 else
     echo "Skipping execution of permissioning binary."
