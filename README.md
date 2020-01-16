@@ -32,4 +32,5 @@ binaries should **not** be run. Refer to the table below for details.
 |server|s|prevents the execution of the server binary|
 |gateway|g|prevents the execution of the gateway binary|
 |udb|u|prevents the execution of the UDB binary|
-
+|notls|N/A|Disables tls from servers, gateways, and permissioning|
+|disablePermissioning|N/A|Disables the registration logic between servers and gateways
