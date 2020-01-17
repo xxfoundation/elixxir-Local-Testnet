@@ -43,3 +43,8 @@ keyPath: "configurations/tlsCerts/gateway-2.rip.key"
 certPath: "configurations/tlsCerts/gateway-2.rip.crt"
 # Path to the gateway certificate file
 serverCertPath: "configurations/tlsCerts/server-2.rip.crt"
+
+# Specifies if this is the first node
+firstNode: false
+# Specifies if this is the last node
+lastNode: false

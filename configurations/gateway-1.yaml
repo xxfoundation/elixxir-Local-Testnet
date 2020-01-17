@@ -23,6 +23,8 @@ cMixNodes:
 # The listening port of this gateway
 Port: 8200
 
+
+
 # The number of seconds a message should remain in the globals before being
 # deleted from the user's message queue
 MessageTimeout: 60
