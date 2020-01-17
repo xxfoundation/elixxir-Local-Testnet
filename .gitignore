@@ -9,3 +9,4 @@
 # Ignore tmp files
 *.tmp
 *.blob*
+*.txt
