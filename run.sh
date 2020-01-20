@@ -36,7 +36,7 @@ BIN_PATH="$(pwd)/binaries"
 CONFIG_PATH="$(pwd)/configurations"
 
 if [[ -z ${runPermissioning} ]]; then
-    "$BIN_PATH"/permissioning.binary -c "$CONFIG_PATH/permissioning.yaml" \
+    "$BIN_PATH"/registration.binary -c "$CONFIG_PATH/registration.yaml" \
                 ${noTls} -v ${disablePermissioning} &
     echo "Permissioning: " $!
 else
