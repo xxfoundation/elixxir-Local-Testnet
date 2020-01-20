@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
+
+# Clear out the previous run's logs
 rm *.log
+
+# Globals
 noTls=""
 disablePermissioning=""
+
 # Get parameter on which binaries to NOT run
 for arg in "$@"
 do
