@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
+# Clear out the previous run's logs
+rm *.log
+
+# Globals
 noTls=""
+disablePermissioning=""
 
 # Get parameter on which binaries to NOT run
 for arg in "$@"
@@ -20,6 +25,10 @@ do
             ;;
         "noTLS" | "notls")
             noTls="--noTLS"
+            ;;
+        "disablePermissioning")
+            disablePermissioning="--disablePermissioning"
+            ;;
     esac
 done
 
@@ -27,8 +36,8 @@ BIN_PATH="$(pwd)/binaries"
 CONFIG_PATH="$(pwd)/configurations"
 
 if [[ -z ${runPermissioning} ]]; then
-    "$BIN_PATH"/permissioning.binary -c "$CONFIG_PATH/permissioning.yaml" \
-                ${noTls} -v &
+    "$BIN_PATH"/registration.binary -c "$CONFIG_PATH/registration.yaml" \
+                ${noTls} -v ${disablePermissioning} &
     echo "Permissioning: " $!
 else
     echo "Skipping execution of permissioning binary."
@@ -36,24 +45,27 @@ fi
 
 if [[ -z ${runServer} ]]; then
     "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-1.yaml" -i 0 \
-     --disablePermissioning --metricsWhitespace ${noTls} &
+      --metricsWhitespace ${noTls} -v ${disablePermissioning} &> server1_err.log &
     echo "Server 1: " $!
     "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-2.yaml" -i 1 \
-    --disablePermissioning --metricsWhitespace ${noTls} &
+     --metricsWhitespace ${noTls} -v ${disablePermissioning} &> server2_err.log &
      echo "Server 2: " $!
     "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-3.yaml" -i 2 \
-    --disablePermissioning --metricsWhitespace ${noTls} &
+     --metricsWhitespace ${noTls} -v ${disablePermissioning} &> server3_err.log &
     echo "Server 3: " $!
 else
     echo "Skipping execution of server binary."
 fi
 
 if [[ -z ${runGateway} ]]; then
-    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-1.yaml" -i 0 -v --disablePermissioning  ${noTls} &
+    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-1.yaml" -i 0 -v  ${noTls} ${disablePermissioning} \
+    &> gw1_err.log &
     echo "Gateway 1: " $!
-    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-2.yaml" -i 1 -v --disablePermissioning  ${noTls} &
+    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-2.yaml" -i 1 -v  ${noTls} ${disablePermissioning} \
+    &> gw2_err.log&
     echo "Gateway 2: " $!
-    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-3.yaml" -i 2 -v --disablePermissioning  ${noTls} &
+    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-3.yaml" -i 2 -v  ${noTls} ${disablePermissioning} \
+    &> gw3_err.log &
     echo "Gateway 3: " $!
 else
     echo "Skipping execution of gateway binary."

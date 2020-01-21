@@ -5,6 +5,8 @@
 # Ignore logs
 *.log
 # Ignore session
-*.session
+*.session*
 # Ignore tmp files
 *.tmp
+*.blob*
+*.txt

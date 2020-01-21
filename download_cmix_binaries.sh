@@ -53,7 +53,7 @@ curl -s -f -L -H "PRIVATE-TOKEN: $PATKEY" -o "$download_path/server.binary" ${SE
 curl -s -f -L -H "PRIVATE-TOKEN: $PATKEY" -o "$download_path/gateway.binary" ${GW_URL}
 
 # Silently download the permissioning binary to the provisioning directory
-curl -s -f -L -H "PRIVATE-TOKEN: $PATKEY" -o "$download_path/permissioning.binary" ${PERMISSIONING_URL}
+curl -s -f -L -H "PRIVATE-TOKEN: $PATKEY" -o "$download_path/registration.binary" ${PERMISSIONING_URL}
 
 # Make binaries executable
 chmod +x "$download_path"/*.binary
