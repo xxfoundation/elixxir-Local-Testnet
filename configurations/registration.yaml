@@ -38,7 +38,7 @@ keyPath: "configurations/tlsCerts/permissioning.rip.key"
 certPath: "configurations/tlsCerts/permissioning.rip.crt"
 
 nsCertPath: "configurations/tlsCerts/nb.rip.crt"
-1nsAddress: "0.0.0.0:18469"
+nsAddress: "0.0.0.0:18469"
 
 
 groups:
