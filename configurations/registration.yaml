@@ -2,6 +2,9 @@
 # Permissioning Server Configuration
 # ==================================
 
+# Batch size of each round
+batchSize: 32
+
 # Verbose logging
 verbose: "true"
 # Path to log file
@@ -26,13 +29,17 @@ clientRegCodes:
 
 udbID: 3
 ndfOutputPath: "newNDF.txt"
-clientVersion: "0.1.0"
+clientVersion: "1.1.0"
 
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the registration server private key file
 keyPath: "configurations/tlsCerts/permissioning.rip.key"
 # Path to the registration server certificate file
 certPath: "configurations/tlsCerts/permissioning.rip.crt"
+
+nsCertPath: "configurations/tlsCerts/nb.rip.crt"
+1nsAddress: "0.0.0.0:18469"
+
 
 groups:
   cmix:
