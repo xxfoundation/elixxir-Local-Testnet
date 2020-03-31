@@ -9,6 +9,8 @@ batchSize: 32
 verbose: "true"
 # Path to log file
 logPath: "permissioning.log"
+# Minimum number of nodes to begin running rounds
+minimumNodes: 3
 
 # The listening port of this server
 port: 18000
