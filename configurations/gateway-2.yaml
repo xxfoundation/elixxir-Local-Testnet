@@ -8,8 +8,8 @@
 # Gateway Configuration File
 ##
 
-# Used for debugging
-verbose: True
+# Log message level
+logLevel: 1
 
 # Output log file
 log: "gateway-2.log"
