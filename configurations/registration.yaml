@@ -5,8 +5,9 @@
 # Batch size of each round
 batchSize: 32
 
-# Verbose logging
-verbose: "true"
+# Log message level
+logLevel: 1
+
 # Path to log file
 logPath: "permissioning.log"
 
