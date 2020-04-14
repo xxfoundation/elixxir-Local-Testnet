@@ -10,6 +10,8 @@ logLevel: 1
 
 # Path to log file
 logPath: "permissioning.log"
+# Minimum number of nodes to begin running rounds
+minimumNodes: 3
 
 # The listening port of this server
 port: 18000
@@ -40,7 +42,6 @@ certPath: "configurations/tlsCerts/permissioning.rip.crt"
 
 nsCertPath: "configurations/tlsCerts/nb.rip.crt"
 nsAddress: "0.0.0.0:18469"
-
 
 groups:
   cmix:
