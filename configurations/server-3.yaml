@@ -1,7 +1,6 @@
 # START YAML ===
 
-# Log message level
-logLevel: 1
+logLevel: 0
 node:
   id: ""
   paths:
