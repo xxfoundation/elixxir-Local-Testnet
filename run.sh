@@ -71,6 +71,7 @@ else
     echo "Skipping execution of gateway binary."
 fi
 
+
 if [[ -z ${runUDB} ]]; then
     "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yaml" ${noTls} &
     echo "UDB: " $!
