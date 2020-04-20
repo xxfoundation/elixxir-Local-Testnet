@@ -16,14 +16,15 @@ log: "gateway-1.log"
 
 # The cMix nodes in the network
 cMixNodes:
- - "0.0.0.0:11200"
- - "0.0.0.0:11300"
- - "0.0.0.0:11400"
+  - "0.0.0.0:11200"
+  - "0.0.0.0:11300"
+  - "0.0.0.0:11400"
+  - "0.0.0.0:11500"
+  - "0.0.0.0:11600"
+  - "0.0.0.0:11700"
 
 # The listening port of this gateway
 Port: 8200
-
-
 
 # The number of seconds a message should remain in the globals before being
 # deleted from the user's message queue

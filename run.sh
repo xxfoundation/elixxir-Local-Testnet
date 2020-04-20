@@ -49,10 +49,19 @@ if [[ -z ${runServer} ]]; then
     echo "Server 1: " $!
     GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-2.yaml" -i 1 \
      --metricsWhitespace ${noTls} ${disablePermissioning} &> server2_err.log &
-     echo "Server 2: " $!
+    echo "Server 2: " $!
     GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-3.yaml" -i 2 \
      --metricsWhitespace ${noTls} ${disablePermissioning} &> server3_err.log &
     echo "Server 3: " $!
+    GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-4.yaml" -i 3 \
+     --metricsWhitespace ${noTls} ${disablePermissioning} &> server4_err.log &
+    echo "Server 4: " $!
+    GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-5.yaml" -i 4 \
+     --metricsWhitespace ${noTls} ${disablePermissioning} &> server5_err.log &
+    echo "Server 5: " $!
+    GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-6.yaml" -i 5 \
+     --metricsWhitespace ${noTls} ${disablePermissioning} &> server6_err.log &
+    echo "Server 6: " $!
 else
     echo "Skipping execution of server binary."
 fi
@@ -64,9 +73,18 @@ if [[ -z ${runGateway} ]]; then
    GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info  "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-2.yaml" -i 1  ${noTls} ${disablePermissioning} \
     &> gw2_err.log&
     echo "Gateway 2: " $!
-    GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-3.yaml" -i 2  ${noTls} ${disablePermissioning} \
+   GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-3.yaml" -i 2  ${noTls} ${disablePermissioning} \
     &> gw3_err.log &
     echo "Gateway 3: " $!
+   GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info  "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-4.yaml" -i 3  ${noTls} ${disablePermissioning} \
+    &> gw4_err.log &
+    echo "Gateway 4: " $!
+   GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info  "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-5.yaml" -i 4  ${noTls} ${disablePermissioning} \
+    &> gw5_err.log&
+    echo "Gateway 5: " $!
+   GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-6.yaml" -i 5  ${noTls} ${disablePermissioning} \
+    &> gw6_err.log &
+    echo "Gateway 6: " $!
 else
     echo "Skipping execution of gateway binary."
 fi

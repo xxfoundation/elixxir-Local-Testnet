@@ -12,7 +12,7 @@ logPath: "permissioning.log"
 # Path to the node topology permissioning info
 ndfOutputPath: "newNDF.txt"
 # Minimum number of nodes to begin running rounds
-minimumNodes: 3
+minimumNodes: 6
 
 # UDB ID
 udbID: 3

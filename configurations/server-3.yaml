@@ -11,11 +11,17 @@ node:
     - "0.0.0.0:11200"
     - "0.0.0.0:11300"
     - "0.0.0.0:11400"
+    - "0.0.0.0:11500"
+    - "0.0.0.0:11600"
+    - "0.0.0.0:11700"
 database:
   name: "cmix_server"
   username: "cmix"
   password: ""
   addresses:
+    - ""
+    - ""
+    - ""
     - ""
     - ""
     - ""
@@ -26,6 +32,9 @@ gateways:
     - "0.0.0.0:8200"
     - "0.0.0.0:8300"
     - "0.0.0.0:8400"
+    - "0.0.0.0:8500"
+    - "0.0.0.0:8600"
+    - "0.0.0.0:8700"
 permissioning:
   paths:
     cert: "configurations/tlsCerts/permissioning.rip.crt"

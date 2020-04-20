@@ -16,9 +16,12 @@ log: "gateway-3.log"
 
 # The cMix nodes in the network
 cMixNodes:
- - "0.0.0.0:11200"
- - "0.0.0.0:11300"
- - "0.0.0.0:11400"
+  - "0.0.0.0:11200"
+  - "0.0.0.0:11300"
+  - "0.0.0.0:11400"
+  - "0.0.0.0:11500"
+  - "0.0.0.0:11600"
+  - "0.0.0.0:11700"
 
 # The listening port of this gateway
 Port: 8400
@@ -44,4 +47,4 @@ serverCertPath: "configurations/tlsCerts/server-3.rip.crt"
 # Specifies if this is the first node
 firstNode: false
 # Specifies if this is the last node
-lastNode: true
+lastNode: false
