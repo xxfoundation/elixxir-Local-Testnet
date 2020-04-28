@@ -6,6 +6,7 @@ rm *.log
 # Globals
 noTls=""
 disablePermissioning=""
+nodes=$(ls -1q configurations/server-*.yml | wc -l | xargs)
 
 # Get parameter on which binaries to NOT run
 for arg in "$@"
@@ -36,43 +37,37 @@ BIN_PATH="$(pwd)/binaries"
 CONFIG_PATH="$(pwd)/configurations"
 
 if [[ -z ${runPermissioning} ]]; then
-    "$BIN_PATH"/registration.binary -c "$CONFIG_PATH/registration.yaml" \
-                ${noTls} -v ${disablePermissioning} &
+    "$BIN_PATH"/registration.binary -c "$CONFIG_PATH/registration.yml" \
+                ${noTls} -v ${disablePermissioning} &> registration_err.log &
     echo "Permissioning: " $!
 else
     echo "Skipping execution of permissioning binary."
 fi
 
 if [[ -z ${runServer} ]]; then
-    "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-1.yaml" -i 0 \
-      --metricsWhitespace ${noTls} -v ${disablePermissioning} &> server1_err.log &
-    echo "Server 1: " $!
-    "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-2.yaml" -i 1 \
-     --metricsWhitespace ${noTls} -v ${disablePermissioning} &> server2_err.log &
-     echo "Server 2: " $!
-    "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-3.yaml" -i 2 \
-     --metricsWhitespace ${noTls} -v ${disablePermissioning} &> server3_err.log &
-    echo "Server 3: " $!
+    for i in $(seq $nodes $END); do 
+        x=$(($i - 1))
+        "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-$x.yml" -i $x \
+        --metricsWhitespace ${noTls} -l 1 ${disablePermissioning} &> server$x\_err.log &
+        echo "Server $x: " $!
+    done
 else
     echo "Skipping execution of server binary."
 fi
 
 if [[ -z ${runGateway} ]]; then
-    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-1.yaml" -i 0 -v  ${noTls} ${disablePermissioning} \
-    &> gw1_err.log &
-    echo "Gateway 1: " $!
-    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-2.yaml" -i 1 -v  ${noTls} ${disablePermissioning} \
-    &> gw2_err.log&
-    echo "Gateway 2: " $!
-    "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-3.yaml" -i 2 -v  ${noTls} ${disablePermissioning} \
-    &> gw3_err.log &
-    echo "Gateway 3: " $!
+    for i in $(seq $nodes $END); do 
+        x=$(($i - 1))
+        "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-$x.yml" -i $x -l 1 ${noTls} ${disablePermissioning} \
+        &> gw$x\_err.log &> gateway$x\_err.log &
+        echo "Gateway $x: " $!
+    done
 else
     echo "Skipping execution of gateway binary."
 fi
 
 if [[ -z ${runUDB} ]]; then
-    "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yaml" ${noTls} -v &
+    "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yml" ${noTls} -l 1 &> udb_error.log &
     echo "UDB: " $!
 
 else
