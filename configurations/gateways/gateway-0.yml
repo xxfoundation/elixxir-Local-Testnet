@@ -18,6 +18,7 @@ log: "gateway-0.log"
 cMixNodes:
  - "0.0.0.0:11200"
  - "0.0.0.0:11201"
+ - "0.0.0.0:11202"
 
 # The listening port of this gateway
 Port: 8200
@@ -39,9 +40,9 @@ batchSize: 32
 
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the gateway private key file
-keyPath: "configurations/gateway-0.key"
+keyPath: "configurations/keys/gateway-0.key"
 # Path to the gateway certificate file
-certPath: "configurations/gateway-0.crt"
+certPath: "configurations/keys/gateway-0.crt"
 # Path to the gateway certificate file
 serverCertPath: "configurations/server-0.crt"
 

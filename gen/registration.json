@@ -1,7 +1,6 @@
 {
     "TeamSize": {teamSize},
-    "BatchSize": 32,
-    "RandomOrdering": true,
-    "MinimumDelay": 10,
-    "LastRound": "2019-12-20T16:29:17.475068867-08:00"
+    "BatchSize": 100,
+    "RandomOrdering": false,
+    "MinimumDelay": 100,
  }

@@ -6,7 +6,7 @@ rm *.log
 # Globals
 noTls=""
 disablePermissioning=""
-nodes=$(ls -1q configurations/server-*.yml | wc -l | xargs)
+nodes=$(ls -1q configurations/servers/server-*.yml | wc -l | xargs)
 
 # Get parameter on which binaries to NOT run
 for arg in "$@"
@@ -47,7 +47,7 @@ fi
 if [[ -z ${runServer} ]]; then
     for i in $(seq $nodes $END); do 
         x=$(($i - 1))
-        "$BIN_PATH"/server.binary --config "$CONFIG_PATH/server-$x.yml" -i $x \
+        "$BIN_PATH"/server.binary --config "$CONFIG_PATH/servers/server-$x.yml" -i $x \
         --metricsWhitespace ${noTls} -l 1 ${disablePermissioning} &> server$x\_err.log &
         echo "Server $x: " $!
     done
@@ -58,7 +58,7 @@ fi
 if [[ -z ${runGateway} ]]; then
     for i in $(seq $nodes $END); do 
         x=$(($i - 1))
-        "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateway-$x.yml" -i $x -l 1 ${noTls} ${disablePermissioning} \
+        "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateways/gateway-$x.yml" -i $x -l 1 ${noTls} ${disablePermissioning} \
         &> gw$x\_err.log &> gateway$x\_err.log &
         echo "Gateway $x: " $!
     done

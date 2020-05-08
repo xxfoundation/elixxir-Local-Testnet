@@ -42,9 +42,9 @@ clientVersion: "1.1.0"
 
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the permissioning server private key file
-keyPath: "configurations/permissioning.key"
+keyPath: "configurations/keys/permissioning.key"
 # Path to the permissioning server certificate file
-certPath: "configurations/permissioning.crt"
+certPath: "configurations/keys/permissioning.crt"
 
 # E2E/CMIX Primes
 groups:
