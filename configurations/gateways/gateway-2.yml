@@ -12,16 +12,18 @@
 verbose: True
 
 # Output log file
-log: "gateway-3.log"
+log: "gateway-2.log"
 
 # The cMix nodes in the network
 cMixNodes:
  - "0.0.0.0:11200"
- - "0.0.0.0:11300"
- - "0.0.0.0:11400"
+ - "0.0.0.0:11201"
+ - "0.0.0.0:11202"
 
 # The listening port of this gateway
-Port: 8400
+Port: 8202
+
+
 
 # The number of seconds a message should remain in the globals before being
 # deleted from the user's message queue
@@ -38,13 +40,13 @@ batchSize: 32
 
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the gateway private key file
-keyPath: "configurations/tlsCerts/gateway-3.rip.key"
+keyPath: "configurations/gateway-2.key"
 # Path to the gateway certificate file
-certPath: "configurations/tlsCerts/gateway-3.rip.crt"
+certPath: "configurations/gateway-2.crt"
 # Path to the gateway certificate file
-serverCertPath: "configurations/tlsCerts/server-3.rip.crt"
+serverCertPath: "configurations/server-2.crt"
 
 # Specifies if this is the first node
-firstNode: false
+firstNode: true
 # Specifies if this is the last node
-lastNode: true
+lastNode: false

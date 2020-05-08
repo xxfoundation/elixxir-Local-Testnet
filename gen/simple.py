@@ -7,7 +7,7 @@ def randomString(stringLength=4):
     return ''.join(random.choice(letters) for i in range(stringLength))
 
 def makeTLSPair(pairname):
-    os.system("openssl req -x509 -nodes -days 730 -newkey rsa:4096 -keyout ../configurations/{}.key -out ../configurations/key/{}.crt -config cert.conf -extensions 'v3_req'".format(pairname, pairname))
+    os.system("openssl req -x509 -nodes -days 730 -newkey rsa:4096 -keyout ../configurations/keys/{}.key -out ../configurations/keys/{}.crt -config cert.conf -extensions 'v3_req'".format(pairname, pairname))
     #os.system("openssl req -newkey rsa:4096 -x509 -sha256 -days 3650 -nodes -out gen/{}.crt -keyout gen/{}.key -subj \"/C=US/ST=California/L=Claremont/O=Elixxir/OU=LocalEnv Test Cert/CN=elixxir.io\"".format(pairname, pairname))
 
 nodes = int(input("Total number of nodes: "))
@@ -51,7 +51,7 @@ for i in range(nodes):
 
 # Generate server and gateway configs
 for i in range(nodes):
-    with open("../configurations/server-{}.yml".format(i), 'w') as f:
+    with open("../configurations/servers/server-{}.yml".format(i), 'w') as f:
         # Array of strings defining node and gateway IPs and ports
         node_addrs = []
         gate_addrs = []
@@ -71,7 +71,7 @@ for i in range(nodes):
 
         makeTLSPair("server-" + str(i))
 
-    with open("../configurations/gateway-{}.yml".format(i), 'w') as f:
+    with open("../configurations/gateways/gateway-{}.yml".format(i), 'w') as f:
         # Array of strings defining node and gateway IPs and ports
         node_addrs = []
         for x in range(nodes):
