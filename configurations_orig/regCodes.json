@@ -1,0 +1,27 @@
+[
+  {
+    "RegCode":  "AAAA",
+    "Order":     "0"
+  },
+  {
+    "RegCode":  "BBBB",
+    "Order":     "1"
+  },
+  {
+    "RegCode":  "CCCC",
+    "Order":     "2"
+  },
+  {
+    "RegCode":  "DDDD",
+    "Order":     "3"
+  },
+  {
+    "RegCode":  "EEEE",
+    "Order":     "4"
+  },
+  {
+    "RegCode":  "FFFF",
+    "Order":     "5"
+  }
+
+]
