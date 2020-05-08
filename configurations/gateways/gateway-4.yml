@@ -12,7 +12,7 @@
 verbose: True
 
 # Output log file
-log: "gateway-0.log"
+log: "gateway-4.log"
 
 # The cMix nodes in the network
 cMixNodes:
@@ -27,7 +27,7 @@ cMixNodes:
  - "0.0.0.0:11208"
 
 # The listening port of this gateway
-Port: 8200
+Port: 8204
 
 
 
@@ -46,11 +46,11 @@ batchSize: 32
 
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the gateway private key file
-keyPath: "configurations/gateway-0.key"
+keyPath: "configurations/gateway-4.key"
 # Path to the gateway certificate file
-certPath: "configurations/gateway-0.crt"
+certPath: "configurations/gateway-4.crt"
 # Path to the gateway certificate file
-serverCertPath: "configurations/server-0.crt"
+serverCertPath: "configurations/server-4.crt"
 
 # Specifies if this is the first node
 firstNode: true
