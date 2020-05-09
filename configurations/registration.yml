@@ -9,7 +9,7 @@ logPath: "registration.log"
 # Path to the node topology permissioning info
 ndfOutputPath: "ndf.json"
 # Minimum number of nodes to begin running rounds
-minimumNodes: 6
+minimumNodes: 3
 
 # UDB ID
 udbID: 1
