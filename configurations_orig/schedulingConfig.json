@@ -1,6 +1,0 @@
-{
-  "TeamSize": 3,
-  "BatchSize": 500,
-  "RandomOrdering": true,
-  "MinimumDelay": 300
-}
