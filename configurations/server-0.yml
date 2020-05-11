@@ -2,8 +2,8 @@
 batch: 32
 verbose: false
 node:
-  id: ""
   paths:
+    idf:  "nodeID-0.json"
     cert: "configurations/server-0.crt"
     key:  "configurations/server-0.key"
     log:  "server-0.log"
