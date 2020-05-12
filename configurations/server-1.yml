@@ -1,6 +1,6 @@
 # START YAML ===
 batch: 32
-verbose: false
+loglevel: 2
 node:
   paths:
     idf:  "nodeID-1.json"

@@ -9,7 +9,7 @@
 ##
 
 # Used for debugging
-verbose: True
+loglevel: 2
 
 # Output log file
 log: "gateway-0.log"
@@ -49,8 +49,12 @@ batchSize: 32
 keyPath: "configurations/gateway-0.key"
 # Path to the gateway certificate file
 certPath: "configurations/gateway-0.crt"
-# Path to the gateway certificate file
+# Path to the node certificate file
 serverCertPath: "configurations/server-0.crt"
+
+# Needed to verify that NDF originated from permissioning
+# Path to the permissioning certificate file
+permissioningCertPath: "configurations/permissioning.crt"
 
 # Specifies if this is the first node
 firstNode: true
