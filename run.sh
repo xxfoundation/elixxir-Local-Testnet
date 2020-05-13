@@ -8,6 +8,9 @@ noTls=""
 disablePermissioning=""
 nodes=$(ls -1q configurations/servers/server-*.yml | wc -l | xargs)
 
+export GRPC_GO_LOG_VERBOSITY_LEVEL=99
+export GRPC_GO_LOG_SEVERITY_LEVEL=info
+
 # Get parameter on which binaries to NOT run
 for arg in "$@"
 do
@@ -59,7 +62,7 @@ if [[ -z ${runGateway} ]]; then
     for i in $(seq $nodes $END); do 
         x=$(($i - 1))
         "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateways/gateway-$x.yml" -i $x -l 1 ${noTls} ${disablePermissioning} \
-        &> gw$x\_err.log &> gateway$x\_err.log &
+        &> gw$x\_err.log &
         echo "Gateway $x: " $!
     done
 else
