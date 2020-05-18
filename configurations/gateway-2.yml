@@ -14,22 +14,10 @@ loglevel: 2
 # Output log file
 log: "gateway-2.log"
 
-# The cMix nodes in the network
-cMixNodes:
- - "0.0.0.0:11200"
- - "0.0.0.0:11201"
- - "0.0.0.0:11202"
- - "0.0.0.0:11203"
- - "0.0.0.0:11204"
- - "0.0.0.0:11205"
- - "0.0.0.0:11206"
- - "0.0.0.0:11207"
- - "0.0.0.0:11208"
-
 # The listening port of this gateway
 Port: 8202
 
-
+GatewayNode: "0.0.0.0:11202"
 
 # The number of seconds a message should remain in the globals before being
 # deleted from the user's message queue
@@ -55,8 +43,3 @@ serverCertPath: "configurations/server-2.crt"
 # Needed to verify that NDF originated from permissioning
 # Path to the permissioning certificate file
 permissioningCertPath: "configurations/permissioning.crt"
-
-# Specifies if this is the first node
-firstNode: true
-# Specifies if this is the last node
-lastNode: false
