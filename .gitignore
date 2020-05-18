@@ -10,3 +10,5 @@
 *.tmp
 *.blob*
 *.txt
+# Ignore generated ndf.json
+*/ndf.json
