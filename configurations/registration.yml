@@ -24,7 +24,7 @@ port: 11420
 dbUsername: "cmix"
 dbPassword: ""
 dbName: "cmix_server"
-dbAddress: ""
+dbAddress: "0.0.0.0:6969"
 
 # Path to JSON file with list of Node registration codes (in order of network 
 # placement)
@@ -45,6 +45,10 @@ clientVersion: "1.1.0"
 keyPath: "configurations/permissioning.key"
 # Path to the permissioning server certificate file
 certPath: "configurations/permissioning.crt"
+
+# Time interval (in minutes) in which the database is
+# checked for banned nodes
+BanTrackerInterval: "3"
 
 # E2E/CMIX Primes
 groups:
