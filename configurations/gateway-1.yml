@@ -17,7 +17,7 @@ log: "gateway-1.log"
 # The listening port of this gateway
 Port: 8201
 
-GatewayNode: "0.0.0.0:11201"
+Node: "0.0.0.0:11201"
 
 # The number of seconds a message should remain in the globals before being
 # deleted from the user's message queue
