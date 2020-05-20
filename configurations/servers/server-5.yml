@@ -1,9 +1,10 @@
 # START YAML ===
 batch: 32
-verbose: false
+# Used for debugging
+loglevel: 2
 node:
-  id: ""
   paths:
+    idf:  "nodeID-5.json"
     cert: "configurations/keys/server-5.crt"
     key:  "configurations/keys/server-5.key"
     log:  "server-5.log"

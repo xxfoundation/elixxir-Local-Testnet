@@ -9,7 +9,7 @@
 ##
 
 # Used for debugging
-verbose: True
+loglevel: 2
 
 # Output log file
 log: "gateway-2.log"

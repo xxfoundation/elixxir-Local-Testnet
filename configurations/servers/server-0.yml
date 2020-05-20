@@ -1,9 +1,9 @@
 # START YAML ===
 batch: 32
-verbose: false
+loglevel: 2
 node:
-  id: ""
   paths:
+    idf:  "nodeID-0.json"
     cert: "configurations/keys/server-0.crt"
     key:  "configurations/keys/server-0.key"
     log:  "server-0.log"

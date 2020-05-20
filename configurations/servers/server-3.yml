@@ -4,6 +4,7 @@ verbose: false
 node:
   id: ""
   paths:
+    idf:  "nodeID-3.json"
     cert: "configurations/keys/server-3.crt"
     key:  "configurations/keys/server-3.key"
     log:  "server-3.log"

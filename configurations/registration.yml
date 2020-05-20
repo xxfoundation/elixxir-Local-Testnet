@@ -9,7 +9,7 @@ logPath: "registration.log"
 # Path to the node topology permissioning info
 ndfOutputPath: "ndf.json"
 # Minimum number of nodes to begin running rounds
-minimumNodes: 9
+minimumNodes: 6
 
 # UDB ID
 udbID: 1
@@ -48,7 +48,7 @@ certPath: "configurations/keys/permissioning.crt"
 
 # Time interval (in minutes) in which the database is
 # checked for banned nodes
-NodeTrackerInterval: "3"
+BanTrackerInterval: "3"
 
 # E2E/CMIX Primes
 groups:
