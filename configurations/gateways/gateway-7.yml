@@ -29,7 +29,9 @@ cMixNodes:
 # The listening port of this gateway
 Port: 8207
 
-
+# Needed to verify that NDF originated from permissioning
+# Path to the permissioning certificate file
+permissioningCertPath: "configurations/keys/permissioning.crt"
 
 # The number of seconds a message should remain in the globals before being
 # deleted from the user's message queue
