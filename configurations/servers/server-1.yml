@@ -4,8 +4,8 @@ verbose: false
 node:
   id: ""
   paths:
-    cert: "configurations/server-1.crt"
-    key:  "configurations/server-1.key"
+    cert: "configurations/keys/server-1.crt"
+    key:  "configurations/keys/server-1.key"
     log:  "server-1.log"
   addresses:
     - "0.0.0.0:11200"
@@ -33,7 +33,7 @@ database:
     - ""
 gateways:
   paths:
-    cert: "configurations/gateway-1.crt"
+    cert: "configurations/keys/gateway-1.crt"
   addresses:
     - "0.0.0.0:8200"
     - "0.0.0.0:8201"
@@ -46,7 +46,7 @@ gateways:
     - "0.0.0.0:8208"
 permissioning:
   paths:
-    cert: "configurations/permissioning.crt"
+    cert: "configurations/keys/permissioning.crt"
   address: "0.0.0.0:11420"
   registrationCode: "hsbg"
 groups:

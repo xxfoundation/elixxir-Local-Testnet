@@ -50,7 +50,7 @@ keyPath: "configurations/keys/gateway-2.key"
 # Path to the gateway certificate file
 certPath: "configurations/keys/gateway-2.crt"
 # Path to the gateway certificate file
-serverCertPath: "configurations/server-2.crt"
+serverCertPath: "configurations/keys/server-2.crt"
 
 # Specifies if this is the first node
 firstNode: true

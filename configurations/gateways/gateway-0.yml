@@ -46,11 +46,11 @@ batchSize: 32
 
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the gateway private key file
-keyPath: "configurations/gateway-0.key"
+keyPath: "configurations/keys/gateway-0.key"
 # Path to the gateway certificate file
-certPath: "configurations/gateway-0.crt"
+certPath: "configurations/keys/gateway-0.crt"
 # Path to the gateway certificate file
-serverCertPath: "configurations/server-0.crt"
+serverCertPath: "configurations/keys/server-0.crt"
 
 # Specifies if this is the first node
 firstNode: true
