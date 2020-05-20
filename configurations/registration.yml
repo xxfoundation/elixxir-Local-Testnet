@@ -2,14 +2,14 @@
 # Permissioning Server Configuration
 # ==================================
 
-# Verbose logging
-verbose: "true"
+# Used for debugging
+loglevel: 2
 # Path to log file
 logPath: "registration.log"
 # Path to the node topology permissioning info
 ndfOutputPath: "ndf.json"
 # Minimum number of nodes to begin running rounds
-minimumNodes: 6
+minimumNodes: 9
 
 # UDB ID
 udbID: 1
