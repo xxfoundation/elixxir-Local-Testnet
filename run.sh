@@ -41,7 +41,7 @@ CONFIG_PATH="$(pwd)/configurations"
 
 if [[ -z ${runPermissioning} ]]; then
     "$BIN_PATH"/registration.binary -c "$CONFIG_PATH/registration.yml" \
-                ${noTls} -v ${disablePermissioning} &> registration_err.log &
+                ${noTls} ${disablePermissioning} &> registration_err.log &
     echo "Permissioning: " $!
 else
     echo "Skipping execution of permissioning binary."
