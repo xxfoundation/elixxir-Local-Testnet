@@ -24,7 +24,7 @@ port: 11420
 dbUsername: "cmix"
 dbPassword: ""
 dbName: "cmix_server"
-dbAddress: ""
+dbAddress: "0.0.0.0:5959"
 
 # Path to JSON file with list of Node registration codes (in order of network 
 # placement)
@@ -36,6 +36,10 @@ clientRegCodes:
   - "BBBB"
   - "CCCC"
     
+
+# Time interval (in minutes) in which the database is
+# checked for banned nodes
+BanTrackerInterval: "3"
 
 # Client version (will allow all versions with major version 0)
 clientVersion: "1.1.0"

@@ -7,7 +7,7 @@ def randomString(stringLength=4):
     return ''.join(random.choice(letters) for i in range(stringLength))
 
 def makeTLSPair(pairname):
-    os.system("openssl req -x509 -nodes -days 730 -newkey rsa:4096 -keyout ../configurations/keys/{}.key -out ../configurations/keys/{}.crt -config cert.conf -extensions 'v3_req'".format(pairname, pairname))
+    os.system("openssl req -x509 -nodes -days 730 -newkey rsa:4096 -keyout ../configurations/keys/{}.key -out ../configurations/keys/{}.crt -config cert.conf".format(pairname, pairname))
     #os.system("openssl req -newkey rsa:4096 -x509 -sha256 -days 3650 -nodes -out gen/{}.crt -keyout gen/{}.key -subj \"/C=US/ST=California/L=Claremont/O=Elixxir/OU=LocalEnv Test Cert/CN=elixxir.io\"".format(pairname, pairname))
 
 nodes = int(input("Total number of nodes: "))
@@ -65,8 +65,8 @@ for i in range(nodes):
             .replace("{NODE_ADDR}", "\r\n".join(node_addrs)) \
             .replace("{GATE_ADDR}", "\r\n".join(gate_addrs)) \
             .replace("{DB_ADDR}", "\r\n".join(["    - \"\""] * nodes)) \
-            .replace("AAAA", node_regCodes[i])
-
+            .replace("AAAA", node_regCodes[i]) \
+            .replace("nodeID-1.json", "nodeID-"+str(i)+".json")
         f.write(s_config)
 
         makeTLSPair("server-" + str(i))

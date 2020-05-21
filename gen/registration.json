@@ -2,5 +2,9 @@
     "TeamSize": {teamSize},
     "BatchSize": 32,
     "RandomOrdering": true,
-    "MinimumDelay": 10
+    "MinimumDelay": 60,
+    "RealtimeDelay": 120,
+    "Threshold":     3,
+    "NodeCleanUpInterval": 3,
+    "Secure": 		     true
 }
