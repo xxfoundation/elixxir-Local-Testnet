@@ -7,43 +7,16 @@ node:
     cert: "configurations/server-2.crt"
     key:  "configurations/server-2.key"
     log:  "server-2.log"
-  addresses:
-    - "0.0.0.0:11200"
-    - "0.0.0.0:11201"
-    - "0.0.0.0:11202"
-    - "0.0.0.0:11203"
-    - "0.0.0.0:11204"
-    - "0.0.0.0:11205"
-    - "0.0.0.0:11206"
-    - "0.0.0.0:11207"
-    - "0.0.0.0:11208"
+  address: "0.0.0.0:11202"
 database:
   name: "cmix_server"
   username: "cmix"
   password: ""
-  addresses:
-    - ""
-    - ""
-    - ""
-    - ""
-    - ""
-    - ""
-    - ""
-    - ""
-    - ""
-gateways:
+  address: ""
+gateway:
   paths:
     cert: "configurations/gateway-2.crt"
-  addresses:
-    - "0.0.0.0:8200"
-    - "0.0.0.0:8201"
-    - "0.0.0.0:8202"
-    - "0.0.0.0:8203"
-    - "0.0.0.0:8204"
-    - "0.0.0.0:8205"
-    - "0.0.0.0:8206"
-    - "0.0.0.0:8207"
-    - "0.0.0.0:8208"
+  address: "0.0.0.0:8202"
 permissioning:
   paths:
     cert: "configurations/permissioning.crt"
