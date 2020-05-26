@@ -26,7 +26,7 @@ dbPassword: ""
 dbName: "cmix_server"
 dbAddress: "0.0.0.0:6969"
 
-# Path to JSON file with list of Node registration codes (in order of network 
+# Path to JSON file with list of Node registration codes (in order of network
 # placement)
 RegCodesFilePath: "configurations/regCodes.json"
 
@@ -35,7 +35,7 @@ clientRegCodes:
   - "AAAA"
   - "BBBB"
   - "CCCC"
-    
+
 
 # Client version (will allow all versions with major version 0)
 clientVersion: "1.1.0"
@@ -50,6 +50,9 @@ certPath: "configurations/permissioning.crt"
 # checked for banned nodes
 BanTrackerInterval: "3"
 
+minGatewayVersion: "0.0.0"
+minServerVersion:  "0.0.0"
+nodeMetricInterval: 3
 # E2E/CMIX Primes
 groups:
   cmix:
