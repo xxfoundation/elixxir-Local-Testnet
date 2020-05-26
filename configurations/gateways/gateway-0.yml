@@ -15,16 +15,7 @@ logLevel: 2
 log: "gateway-0.log"
 
 # The cMix nodes in the network
-cMixNodes:
- - "0.0.0.0:11200"
- - "0.0.0.0:11201"
- - "0.0.0.0:11202"
- - "0.0.0.0:11203"
- - "0.0.0.0:11204"
- - "0.0.0.0:11205"
- - "0.0.0.0:11206"
- - "0.0.0.0:11207"
- - "0.0.0.0:11208"
+Node: "0.0.0.0:11200"
 
 # The listening port of this gateway
 Port: 8200

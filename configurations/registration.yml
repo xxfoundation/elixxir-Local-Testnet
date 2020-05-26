@@ -3,7 +3,7 @@
 # ==================================
 
 # Verbose logging
-verbose: "true"
+loglevel: 2
 # Path to log file
 logPath: "registration.log"
 # Path to the node topology permissioning info
