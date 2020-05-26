@@ -5,8 +5,8 @@ loglevel: 2
 node:
   paths:
     idf:  "nodeID-2.json"
-    cert: "configurations/keys/server-0.crt"
-    key:  "configurations/keys/server-0.key"
+    cert: "configurations/keys/server-2.crt"
+    key:  "configurations/keys/server-2.key"
     log:  "server-0.log"
   address: "0.0.0.0:11202"
 
