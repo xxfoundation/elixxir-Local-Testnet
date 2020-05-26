@@ -24,7 +24,7 @@ database:
     - ""
     - ""
     - ""
-gateways:
+gateway:
   paths:
     cert: "configurations/keys/gateway-0.crt"
   address : "0.0.0.0:8200"
