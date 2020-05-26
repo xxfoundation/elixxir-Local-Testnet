@@ -4,20 +4,11 @@ loglevel: 2
 
 node:
   paths:
-    idf:  "nodeID-3.json"
-    cert: "configurations/keys/server-3.crt"
-    key:  "configurations/keys/server-3.key"
-    log:  "server-3.log"
-  addresses:
-    - "0.0.0.0:11200"
-    - "0.0.0.0:11201"
-    - "0.0.0.0:11202"
-    - "0.0.0.0:11203"
-    - "0.0.0.0:11204"
-    - "0.0.0.0:11205"
-    - "0.0.0.0:11206"
-    - "0.0.0.0:11207"
-    - "0.0.0.0:11208"
+    idf:  "nodeID-0.json"
+    cert: "configurations/keys/server-0.crt"
+    key:  "configurations/keys/server-0.key"
+    log:  "server-0.log"
+  address: "0.0.0.0:11203"
 database:
   name: "cmix_server"
   username: "cmix"
