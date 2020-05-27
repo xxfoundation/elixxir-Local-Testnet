@@ -15,8 +15,7 @@ verbose: True
 log: "gateway-1.log"
 
 # The cMix nodes in the network
-cMixNodes:
-{NODE_ADDR}
+Node: {NODE_ADDR}
 
 # The listening port of this gateway
 Port: 8200

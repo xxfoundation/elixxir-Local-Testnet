@@ -6,5 +6,5 @@
     "RealtimeDelay": 120,
     "Threshold":     3,
     "NodeCleanUpInterval": 3,
-    "Secure": 		     false
+    "Secure": 		     true
 }

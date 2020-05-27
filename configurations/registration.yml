@@ -3,13 +3,13 @@
 # ==================================
 
 # Verbose logging
-loglevel: 2
+verbose: "true"
 # Path to log file
 logPath: "registration.log"
 # Path to the node topology permissioning info
 ndfOutputPath: "ndf.json"
 # Minimum number of nodes to begin running rounds
-minimumNodes: 9
+minimumNodes: 3
 
 # UDB ID
 udbID: 1
@@ -48,12 +48,13 @@ minGatewayVersion: "1.1.0"
 minServerVersion:  "1.1.0"
 nodeMetricInterval: 3
 
-
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the permissioning server private key file
 keyPath: "configurations/keys/permissioning.key"
 # Path to the permissioning server certificate file
 certPath: "configurations/keys/permissioning.crt"
+
+
 
 # E2E/CMIX Primes
 groups:

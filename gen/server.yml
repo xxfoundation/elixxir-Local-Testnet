@@ -9,19 +9,17 @@ node:
     cert: "configurations/keys/server-1.crt"
     key:  "configurations/keys/server-1.key"
     log:  "server-1.log"
-  addresses:
-{NODE_ADDR}
+  address: {NODE_ADDR}
 database:
   name: "cmix_server"
   username: "cmix"
   password: ""
   addresses:
 {DB_ADDR}
-gateways:
+gateway:
   paths:
     cert: "configurations/keys/gateway-1.crt"
-  addresses:
-{GATE_ADDR}
+  address: {GATE_ADDR}
 permissioning:
   paths:
     cert: "configurations/keys/permissioning.crt"

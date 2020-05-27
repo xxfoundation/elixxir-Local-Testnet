@@ -53,17 +53,16 @@ for i in range(nodes):
 for i in range(nodes):
     with open("../configurations/servers/server-{}.yml".format(i), 'w') as f:
         # Array of strings defining node and gateway IPs and ports
-        node_addrs = []
-        gate_addrs = []
-        for x in range(nodes):
-            node_addrs.append("    - \"0.0.0.0:{}\"".format(node_ports[x]))
-            gate_addrs.append("    - \"0.0.0.0:{}\"".format(gateway_ports[x]))
+        node_addr = []
+        gate_addr = []
+        node_addr.append("\"0.0.0.0:{}\"".format(node_ports[i]))
+        gate_addr.append("\"0.0.0.0:{}\"".format(gateway_ports[i]))
 
         # Create a new config based on template
         s_config = server_template.replace("server-1", "server-" + str(i)) \
             .replace("gateway-1", "gateway-" + str(i)) \
-            .replace("{NODE_ADDR}", "\r\n".join(node_addrs)) \
-            .replace("{GATE_ADDR}", "\r\n".join(gate_addrs)) \
+            .replace("{NODE_ADDR}", "".join(node_addr)) \
+            .replace("{GATE_ADDR}", "".join(gate_addr)) \
             .replace("{DB_ADDR}", "\r\n".join(["    - \"\""] * nodes)) \
             .replace("AAAA", node_regCodes[i]) \
             .replace("nodeID-1.json", "nodeID-"+str(i)+".json")
@@ -73,15 +72,14 @@ for i in range(nodes):
 
     with open("../configurations/gateways/gateway-{}.yml".format(i), 'w') as f:
         # Array of strings defining node and gateway IPs and ports
-        node_addrs = []
-        for x in range(nodes):
-            node_addrs.append(" - \"0.0.0.0:{}\"".format(node_ports[x]))
+        node_addr = []
+        node_addr.append("\"0.0.0.0:{}\"".format(node_ports[i]))
 
         # Create a new config based on template
         g_config = gateway_template.replace("server-1", "server-" + str(i)) \
             .replace("gateway-1", "gateway-" + str(i)) \
             .replace("8200", str(gateway_ports[i])) \
-            .replace("{NODE_ADDR}", "\r\n".join(node_addrs))
+            .replace("{NODE_ADDR}", "\r\n".join(node_addr))
 
         f.write(g_config)
 
