@@ -50,8 +50,8 @@ certPath: "configurations/permissioning.crt"
 # checked for banned nodes
 BanTrackerInterval: "3"
 
-minGatewayVersion: "0.0.0"
-minServerVersion:  "0.0.0"
+minGatewayVersion: "1.1.0"
+minServerVersion:  "1.1.0"
 nodeMetricInterval: 3
 # E2E/CMIX Primes
 groups:
