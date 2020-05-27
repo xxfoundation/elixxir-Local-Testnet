@@ -7,17 +7,9 @@ node:
     idf:  "nodeID-5.json"
     cert: "configurations/keys/server-5.crt"
     key:  "configurations/keys/server-5.key"
-    log:  "server-5.log"
-  addresses:
-    - "0.0.0.0:11200"
-    - "0.0.0.0:11201"
-    - "0.0.0.0:11202"
-    - "0.0.0.0:11203"
-    - "0.0.0.0:11204"
-    - "0.0.0.0:11205"
-    - "0.0.0.0:11206"
-    - "0.0.0.0:11207"
-    - "0.0.0.0:11208"
+    log:  "server-0.log"
+  address: "0.0.0.0:11205"
+
 database:
   name: "cmix_server"
   username: "cmix"
@@ -32,19 +24,11 @@ database:
     - ""
     - ""
     - ""
-gateways:
+gateway:
   paths:
     cert: "configurations/keys/gateway-5.crt"
-  addresses:
-    - "0.0.0.0:8200"
-    - "0.0.0.0:8201"
-    - "0.0.0.0:8202"
-    - "0.0.0.0:8203"
-    - "0.0.0.0:8204"
-    - "0.0.0.0:8205"
-    - "0.0.0.0:8206"
-    - "0.0.0.0:8207"
-    - "0.0.0.0:8208"
+  address: "0.0.0.0:8205"
+
 permissioning:
   paths:
     cert: "configurations/keys/permissioning.crt"
