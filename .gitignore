@@ -10,3 +10,4 @@
 *.tmp
 *.blob*
 *.txt
+nodeID*.json
