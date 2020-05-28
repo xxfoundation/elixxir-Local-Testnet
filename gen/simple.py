@@ -7,8 +7,11 @@ def randomString(stringLength=4):
     return ''.join(random.choice(letters) for i in range(stringLength))
 
 def makeTLSPair(pairname):
-    os.system("openssl req -x509 -nodes -days 730 -newkey rsa:4096 -keyout ../configurations/keys/{}.key -out ../configurations/keys/{}.crt -config cert.conf".format(pairname, pairname))
-    #os.system("openssl req -newkey rsa:4096 -x509 -sha256 -days 3650 -nodes -out gen/{}.crt -keyout gen/{}.key -subj \"/C=US/ST=California/L=Claremont/O=Elixxir/OU=LocalEnv Test Cert/CN=elixxir.io\"".format(pairname, pairname))
+    os.system("go build -o main generate_cert.go")
+    os.system("./main -host=127.0.0.1 -ca=true -certPath=../configurations/keys/{}.crt -keyPath=../configurations/keys/{}.key".format(pairname, pairname))
+
+    #os.system("openssl req -new -newkey rsa:4096 -x509 -sha256 -days 730 -nodes -keyout ../configurations/keys/{}.key -out    ../configurations/keys/{}.crt -config cert.conf".format(pairname, pairname))
+    #os.system("openssl req -newkey rsa:4096 -x509 -sha256 -days 3650 -nodes -out gen/ {}.crt -keyout gen/{}.key -subj \"/C=US/ST=California/L=Claremont/O=Elixxir/OU=LocalEnv Test Cert/CN=elixxir.io\"".format(pairname, pairname))
 
 nodes = int(input("Total number of nodes: "))
 minStart = int(input("Minimum number of nodes online to start network: "))

@@ -9,7 +9,7 @@
 ##
 
 # Used for debugging
-logLevel: 2
+verbose: True
 
 # Output log file
 log: "gateway-8.log"
