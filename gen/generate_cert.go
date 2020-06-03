@@ -3,7 +3,7 @@ package main
 // Copyright 2009 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
-// https://golang.org/src/crypto/tlkey.pems/generate_cert.go
+// https://golang.org/src/crypto/tls/generate_cert.go
 // Generate a self-signed X.509 certificate for a TLS server. Outputs to
 // 'cert.pem' and 'key.pem' and will overwrite existing files.
 
@@ -30,7 +30,7 @@ var (
 	host       = flag.String("host", "", "Comma-separated hostnames and IPs to generate a certificate for")
 	validFrom  = flag.String("start-date", "", "Creation date formatted as Jan 1 15:04:05 2011")
 	validFor   = flag.Duration("duration", 3*365*24*time.Hour, "Duration that certificate is valid for")
-	isCA       = flag.Bool("ca", false, "whether this cert should be its own Certificate Authority")
+	isCA       = flag.Bool("ca", true, "whether this cert should be its own Certificate Authority")
 	rsaBits    = flag.Int("rsa-bits", 4096, "Size of RSA key to generate. Ignored if --ecdsa-curve is set")
 	ecdsaCurve = flag.String("ecdsa-curve", "", "ECDSA curve to use to generate a key. Valid values are P224, P256 (recommended), P384, P521")
 	ed25519Key = flag.Bool("ed25519", false, "Generate an Ed25519 key")
@@ -103,13 +103,15 @@ func main() {
 	template := x509.Certificate{
 		SerialNumber: serialNumber,
 		Subject: pkix.Name{
-			Organization: []string{"Elixxir"},
+			Organization:  []string{"Elixxir"},
+			Country:       []string{"US"},
+			Locality:      []string{"Claremont"},
 		},
 		NotBefore: notBefore,
 		NotAfter:  notAfter,
 
-		KeyUsage:              x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature,
-		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth},
+		KeyUsage:              x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature ,
+		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth, x509.ExtKeyUsageClientAuth},
 		BasicConstraintsValid: true,
 		DNSNames:[]string{"foo.co.uk"},
 		EmailAddresses: []string{"admin@elixxir.io"},
