@@ -11,7 +11,7 @@ def randomString(stringLength=4):
     return ''.join(random.choice(letters) for i in range(stringLength))
 
 def makeTLSPair(pairname):
-    os.system("go build -o main generate_cert.go")
+   # os.system("go build -o main generate_cert.go")
     os.system("./main -host=127.0.0.1 -ca=true -certPath=../configurations/keys/{}.crt -keyPath=../configurations/keys/{}.key".format(pairname, pairname))
 
     #os.system("openssl req -new -newkey rsa:4096 -x509 -sha256 -days 730 -nodes -keyout ../configurations/keys/{}.key -out    ../configurations/keys/{}.crt -config cert.conf".format(pairname, pairname))
