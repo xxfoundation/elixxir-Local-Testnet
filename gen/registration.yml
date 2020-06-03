@@ -5,7 +5,7 @@
 # Verbose logging
 verbose: "true"
 # Path to log file
-logPath: "registration.log"
+logPath: "logs/registration.log"
 # Path to the node topology permissioning info
 ndfOutputPath: "ndf.json"
 # Minimum number of nodes to begin running rounds

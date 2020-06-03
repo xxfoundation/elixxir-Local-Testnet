@@ -8,7 +8,7 @@ node:
     idf:  "nodeID-1.json"
     cert: "configurations/keys/server-1.crt"
     key:  "configurations/keys/server-1.key"
-    log:  "server-1.log"
+    log:  "logs/server-1.log"
   address: {NODE_ADDR}
 database:
   name: "cmix_server"
