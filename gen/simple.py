@@ -1,6 +1,10 @@
 import os
 import string
 import random
+import time
+
+# These replace the number order strings, to test that region bucketing works.
+secure_strings = ["NA_WEST", "NA_EAST", "EUROPE_WEST", "EUROPE_EAST", "ASIA"]
 
 def randomString(stringLength=4):
     letters = string.ascii_lowercase
@@ -16,6 +20,23 @@ def makeTLSPair(pairname):
 nodes = int(input("Total number of nodes: "))
 minStart = int(input("Minimum number of nodes online to start network: "))
 teamSize = int(input("Size of each team: "))
+useSecureOrders = bool(input("Use secure order strings: ")) # see: secure_strings
+
+
+if nodes % len(secure_strings) != 0 and useSecureOrders == True:
+    print("[WARN] Inputted nodes is not cleanly divisable by number of secure order strings ({})".format(len(secure_strings)))
+    print("[WARN] Script will continue in 3 seconds.")
+    time.sleep(3)
+
+if nodes < minStart or nodes < teamSize:
+    print("[WARN] minSize or teamSize is higher than the total amount of nodes".format(len(secure_strings)))
+    print("[WARN] Script will continue in 3 seconds.")
+    time.sleep(3)
+
+if teamSize > minStart:
+    print("[WARN] teamSize is over minStart, this could mean registration starts rounds without the minimum number of nodes to sustain it?".format(len(secure_strings)))
+    print("[WARN] Script will continue in 3 seconds.")
+    time.sleep(3)
 
 # Array of integers for ports of each server and gateway in the network
 gateway_ports = []
@@ -38,7 +59,7 @@ reg_json_template = ""
 with open("registration.json") as f:
     reg_json_template = f.read()
 
-# Generate a list of all ports servers and gateways occupy. Doing this as a 
+# Generate a list of all ports servers and gateways occupy. Doing this as a
 # separate step because their configs need every one listed, and generating them
 # once is lighter on CPU cycles.
 for i in range(nodes):
@@ -46,7 +67,7 @@ for i in range(nodes):
     node_ports.append(11200+i)
 
     regCode = randomString()
-    # If this regCode is already in the list, we loop until we get one that 
+    # If this regCode is already in the list, we loop until we get one that
     # isn't
     while regCode in node_regCodes:
         regCode = randomString()
@@ -102,10 +123,18 @@ with open("../configurations/regCodes.json", "w") as f:
     f.write("[")
 
     for i in range(nodes):
+        # Generate the order string to use
+        order = ""
+        if useSecureOrders:
+            order = secure_strings[i % len(secure_strings)]
+        else:
+            order = str(i)
+
         f.write("{\"RegCode\": \"" + node_regCodes[i] + "\", \"Order\": \"" + \
-            str(i) + "\"}")
+            order + "\"}")
+
         # If not the last element, write a comma
-        if i is not (nodes - 1): 
+        if i is not (nodes - 1):
             f.write(",")
 
     f.write("]")

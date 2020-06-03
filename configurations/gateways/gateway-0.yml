@@ -12,7 +12,7 @@
 verbose: True
 
 # Output log file
-log: "gateway-0.log"
+log: "logs/gateway-0.log"
 
 # The cMix nodes in the network
 Node: "0.0.0.0:11200"
