@@ -41,7 +41,7 @@ CONFIG_PATH="$(pwd)/configurations"
 
 if [[ -z ${runPermissioning} ]]; then
     "$BIN_PATH"/registration.binary -c "$CONFIG_PATH/registration.yml" \
-                ${noTls} ${disablePermissioning} &> registration_err.log &
+                ${noTls} ${disablePermissioning} &> logs/registration_err.log &
     echo "Permissioning: " $!
 else
     echo "Skipping execution of permissioning binary."
@@ -51,7 +51,7 @@ if [[ -z ${runServer} ]]; then
     for i in $(seq $nodes $END); do 
         x=$(($i - 1))
         "$BIN_PATH"/server.binary --config "$CONFIG_PATH/servers/server-$x.yml" -i $x \
-        --metricsWhitespace ${noTls} -l 1 ${disablePermissioning} &> server$x\_err.log &
+        --metricsWhitespace ${noTls} -l 1 ${disablePermissioning} &> logs/server$x\_err.log &
         echo "Server $x: " $!
     done
 else
@@ -62,7 +62,7 @@ if [[ -z ${runGateway} ]]; then
     for i in $(seq $nodes $END); do 
         x=$(($i - 1))
         "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateways/gateway-$x.yml" -i $x -l 1 ${noTls} ${disablePermissioning} \
-        &> gw$x\_err.log &
+        &> logs/gw$x\_err.log &
         echo "Gateway $x: " $!
     done
 else
