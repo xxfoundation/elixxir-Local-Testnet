@@ -4,8 +4,6 @@
 rm *.log
 
 # Globals
-noTls=""
-disablePermissioning=""
 nodes=$(ls -1q configurations/servers/server-*.yml | wc -l | xargs)
 
 export GRPC_GO_LOG_VERBOSITY_LEVEL=99
@@ -27,12 +25,7 @@ do
         "u" | "udb")
             runUDB="false"
             ;;
-        "noTLS" | "notls")
-            noTls="--noTLS"
-            ;;
-        "disablePermissioning")
-            disablePermissioning="--disablePermissioning"
-            ;;
+
     esac
 done
 
@@ -41,7 +34,7 @@ CONFIG_PATH="$(pwd)/configurations"
 
 if [[ -z ${runPermissioning} ]]; then
     "$BIN_PATH"/registration.binary -c "$CONFIG_PATH/registration.yml" \
-                ${noTls} ${disablePermissioning} &> registration_err.log &
+               -l 2 &> registration_err.log &
     echo "Permissioning: " $!
 else
     echo "Skipping execution of permissioning binary."
@@ -50,8 +43,8 @@ fi
 if [[ -z ${runServer} ]]; then
     for i in $(seq $nodes $END); do 
         x=$(($i - 1))
-        "$BIN_PATH"/server.binary --config "$CONFIG_PATH/servers/server-$x.yml" -i $x \
-        --metricsWhitespace ${noTls} -l 1 ${disablePermissioning} &> server$x\_err.log &
+        "$BIN_PATH"/server.binary --config "$CONFIG_PATH/servers/server-$x.yml" \
+          -l 1  &> server$x\_err.log &
         echo "Server $x: " $!
     done
 else
@@ -61,7 +54,7 @@ fi
 if [[ -z ${runGateway} ]]; then
     for i in $(seq $nodes $END); do 
         x=$(($i - 1))
-        "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateways/gateway-$x.yml" -i $x -l 1 ${noTls} ${disablePermissioning} \
+        "$BIN_PATH"/gateway.binary --config "$CONFIG_PATH/gateways/gateway-$x.yml" -l 2 \
         &> gw$x\_err.log &
         echo "Gateway $x: " $!
     done
@@ -70,7 +63,7 @@ else
 fi
 
 if [[ -z ${runUDB} ]]; then
-    "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yml" ${noTls} -l 1 &> udb_error.log &
+    "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yml" -l 1 &> udb_error.log &
     echo "UDB: " $!
 
 else
