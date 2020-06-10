@@ -11,3 +11,4 @@
 *.blob*
 *.txt
 nodeID*.json
+gatewayIDF*.json
