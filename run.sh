@@ -2,7 +2,7 @@
 
 # Clear out the previous run's logs
 rm *.log
-
+rm roundId.txt
 nodes=$(ls -1q configurations/servers/server-*.yml | wc -l | xargs)
 
 export GRPC_GO_LOG_VERBOSITY_LEVEL=99
