@@ -27,7 +27,7 @@ nodeAddress: "0.0.0.0:11200"
 messageTimeout: "60s"
 
 # Path to where the IDF is saved. This is used by the wrapper management script.
-idfPath: "gatewayIDF-2.json"
+idfPath: "gatewayIDF-0.json"
 
 # The path to the private key associated with the self-signed TLS certificate.
 keyPath: "configurations/gateway-0.key"
