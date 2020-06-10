@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Clear out the previous run's logs
 rm *.log
-rm configurations/*-definition
+rm roundId.txt
 # Globals
 
 # Allow for verbose gRPC logs
