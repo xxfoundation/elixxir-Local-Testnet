@@ -13,3 +13,4 @@
 # Ignore generated ndf.json
 */ndf.json
 nodeID-*
+gatewayIDF-*
