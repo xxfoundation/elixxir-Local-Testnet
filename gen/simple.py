@@ -4,18 +4,16 @@ import random
 import time
 
 # These replace the number order strings, to test that region bucketing works.
-secure_strings = ["NA_WEST", "NA_EAST", "EUROPE_WEST", "EUROPE_EAST", "ASIA"]
+secure_strings = ["Americas", "WesternEurope", "CentralEurope", "EasternEurope", "MiddleEast",
+"Africa", "Russia", "Asia"]
 
 def randomString(stringLength=4):
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(stringLength))
 
 def makeTLSPair(pairname):
-   # os.system("go build -o main generate_cert.go")
-    os.system("./main -host=127.0.0.1 -ca=true -certPath=../configurations/keys/{}.crt -keyPath=../configurations/keys/{}.key".format(pairname, pairname))
-
-    #os.system("openssl req -new -newkey rsa:4096 -x509 -sha256 -days 730 -nodes -keyout ../configurations/keys/{}.key -out    ../configurations/keys/{}.crt -config cert.conf".format(pairname, pairname))
-    #os.system("openssl req -newkey rsa:4096 -x509 -sha256 -days 3650 -nodes -out gen/ {}.crt -keyout gen/{}.key -subj \"/C=US/ST=California/L=Claremont/O=Elixxir/OU=LocalEnv Test Cert/CN=elixxir.io\"".format(pairname, pairname))
+    os.system("openssl req -x509 -nodes -days 730 -newkey rsa:4096 -keyout ../configurations/keys/{}.key -out ../configurations/keys/{}.crt -config cert.conf".format(pairname, pairname))
+    #os.system("openssl req -newkey rsa:4096 -x509 -sha256 -days 3650 -nodes -out gen/{}.crt -keyout gen/{}.key -subj \"/C=US/ST=California/L=Claremont/O=Elixxir/OU=LocalEnv Test Cert/CN=elixxir.io\"".format(pairname, pairname))
 
 nodes = int(input("Total number of nodes: "))
 minStart = int(input("Minimum number of nodes online to start network: "))
@@ -79,7 +77,7 @@ for i in range(nodes):
         # Array of strings defining node and gateway IPs and ports
         node_addr = []
         gate_addr = []
-        node_addr.append("\"0.0.0.0:{}\"".format(node_ports[i]))
+        node_addr.append("{}".format(node_ports[i]))
         gate_addr.append("\"0.0.0.0:{}\"".format(gateway_ports[i]))
 
         # Create a new config based on template
@@ -87,7 +85,7 @@ for i in range(nodes):
             .replace("gateway-1", "gateway-" + str(i)) \
             .replace("{NODE_ADDR}", "".join(node_addr)) \
             .replace("{GATE_ADDR}", "".join(gate_addr)) \
-            .replace("{DB_ADDR}", "\r\n".join(["    - \"\""] * nodes)) \
+            .replace("{DB_ADDR}", "\r\n".join(["\"\""])) \
             .replace("AAAA", node_regCodes[i]) \
             .replace("nodeID-1.json", "nodeID-"+str(i)+".json")
         f.write(s_config)
@@ -103,8 +101,8 @@ for i in range(nodes):
         g_config = gateway_template.replace("server-1", "server-" + str(i)) \
             .replace("gateway-1", "gateway-" + str(i)) \
             .replace("8200", str(gateway_ports[i])) \
-            .replace("{NODE_ADDR}", "\r\n".join(node_addr))
-
+            .replace("{NODE_ADDR}", "\r\n".join(node_addr)) \
+            .replace("gatewayIDF", "gatewayIDF-" + str(i))
         f.write(g_config)
 
         makeTLSPair("gateway-" + str(i))
