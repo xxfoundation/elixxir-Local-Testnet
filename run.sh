@@ -74,7 +74,7 @@ finish() {
     for job in $(cat pids.tmp)
     do
         echo "KILLING $job"
-        kill "$job" || true
+        kill -9 "$job" || true
     done
 }
 # Execute finish function on exit
