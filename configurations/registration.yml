@@ -22,7 +22,7 @@ updateIdPath: "updateId.txt"
 udbID: 1
 
 # Public address, used in NDF it gives to client
-publicAdress: "0.0.0.0:11420"
+publicAddress: "0.0.0.0"
 
 # The listening port of this  server
 port: 11420
