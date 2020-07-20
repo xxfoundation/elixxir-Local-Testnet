@@ -58,6 +58,9 @@ if [[ -z ${runGateway} ]]; then
 else
     echo "Skipping execution of gateway binary."
 fi
+
+sleep 4
+
 if [[ -z ${runUDB} ]]; then
     "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yml" ${noTls} -l 1 &> udb_error.log &
     echo "UDB: " $!
