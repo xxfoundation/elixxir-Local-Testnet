@@ -2,6 +2,9 @@
 # Clear out the previous run's logs
 rm *.log
 rm roundId.txt
+rm nodeID-*
+rm gatewayIDF-*
+rm *-knownRound
 # Globals
 
 # Allow for verbose gRPC logs
