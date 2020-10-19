@@ -61,12 +61,13 @@ fi
 
 sleep 4
 
-if [[ -z ${runUDB} ]]; then
-    "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yml" ${noTls} -l 1 &> udb_error.log &
-    echo "UDB: " $!
-else
-    echo "Skipping execution of UDB binary."
-fi
+# fixme: Uncomment when UDB is fixed
+#if [[ -z ${runUDB} ]]; then
+#    "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yml" ${noTls} -l 1 &> udb_error.log &
+#    echo "UDB: " $!
+#else
+#    echo "Skipping execution of UDB binary."
+#fi
 # Pipe child PIDs into file
 jobs -p > "pids.tmp"
 finish() {

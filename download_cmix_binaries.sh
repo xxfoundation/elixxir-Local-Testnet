@@ -33,7 +33,7 @@ PRIVATEGRITY_REPOS="https://gitlab.com/api/v4/projects/elixxir%2F"
 # Get URLs for artifacts from all relevant repos
 UDB_URL="${PRIVATEGRITY_REPOS}user-discovery-bot/$URL_FRAG/udb$BIN"
 SERVER_URL="${PRIVATEGRITY_REPOS}server/$URL_FRAG/server$BIN"
-GW_URL="${PRIVATEGRITY_REPOS}gateway/$URL_FRAG/gateway$BIN"
+GW_URL="${PRIVATEGRITY_REPOS}gateway/jobs/artifacts/peppa/newClient/raw/release/gateway$BIN"
 PERMISSIONING_URL="${PRIVATEGRITY_REPOS}registration/$URL_FRAG/registration$BIN"
 
 # Set up the gitlab access token

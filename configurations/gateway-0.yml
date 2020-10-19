@@ -41,3 +41,6 @@ serverCertPath: "configurations/server-0.crt"
 # Needed to verify that NDF originated from permissioning
 # Path to the permissioning certificate file
 permissioningCertPath: "configurations/permissioning.crt"
+
+#location where gateway saves its known round
+knownRoundsPath: "gateway0-knownRound"
