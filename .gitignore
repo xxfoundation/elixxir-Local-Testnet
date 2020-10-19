@@ -12,5 +12,7 @@
 *.txt
 # Ignore generated ndf.json
 */ndf.json
+# Ignore procedurally generated files
 nodeID-*
 gatewayIDF-*
+*-knownRound

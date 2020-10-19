@@ -2,7 +2,7 @@
   "TeamSize": 3,
   "BatchSize": 32,
   "RandomOrdering": false,
-  "MinimumDelay": 60,
+  "MinimumDelay": 7000,
   "RealtimeDelay": 120,
   "Threshold":     3,
   "NodeCleanUpInterval": 3,
