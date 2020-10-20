@@ -36,7 +36,7 @@ BIN_PATH="$(pwd)/binaries"
 CONFIG_PATH="$(pwd)/configurations"
 if [[ -z ${runPermissioning} ]]; then
     GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/registration.binary \
-    --logLevel 2 -c "$CONFIG_PATH/registration.yml" &> registration_err.log &
+    --logLevel 0 -c "$CONFIG_PATH/registration.yml" &> registration_err.log &
     echo "Permissioning: " $!
 else
     echo "Skipping execution of permissioning binary."
@@ -45,7 +45,7 @@ if [[ -z ${runServer} ]]; then
     for i in $(seq $nodes $END); do
         x=$(($i - 1))
         GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/server.binary \
-        -l 2 --config "$CONFIG_PATH/server-$x.yml" &> server$x\_err.log &
+        -l 0 --config "$CONFIG_PATH/server-$x.yml" &> server$x\_err.log &
         echo "Server $x: " $!
     done
 else
@@ -55,7 +55,7 @@ if [[ -z ${runGateway} ]]; then
     for i in $(seq $nodes $END); do
         x=$(($i - 1))
         GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/gateway.binary \
-        --logLevel 2 --config "$CONFIG_PATH/gateway-$x.yml" &> gw$x\_err.log &
+        --logLevel 0 --config "$CONFIG_PATH/gateway-$x.yml" &> gw$x\_err.log &
         echo "Gateway $x: " $!
     done
 else

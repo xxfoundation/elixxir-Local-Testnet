@@ -9,7 +9,7 @@
 ##
 
 # Used for debugging
-loglevel: 2
+loglevel: 0
 
 # Output log file
 log: "gateway-1.log"

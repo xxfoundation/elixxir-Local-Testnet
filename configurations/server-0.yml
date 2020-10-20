@@ -2,7 +2,7 @@
 # registration code used for first time registration. Unique. Provided by xx network
 registrationCode: "qpol"
 useGPU: false
-logLevel: 2
+logLevel: 0
 node:
   paths:
     # Path where an error file will be placed in the event of a fatal error
