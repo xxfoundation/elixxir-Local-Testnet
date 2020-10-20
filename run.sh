@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Clear out the previous run's logs
+rm gateway*-knownRound
+rm errServer-*
 rm *.log
 rm roundId.txt
 rm *-knownRound
