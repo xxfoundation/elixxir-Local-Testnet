@@ -1,0 +1,46 @@
+################################################################################
+## Copyright © 2018 Privategrity Corporation                                   #
+##                                                                             #
+## All rights reserved.                                                        #
+################################################################################
+
+##
+# Gateway Configuration File
+##
+
+# Used for debugging
+loglevel: 0
+
+# Output log file
+log: "gateway-1.log"
+
+# The listening port of this gateway
+Port: 8201
+
+# The local IP address of the Gateway used for internal listening.
+localAddress: "0.0.0.0"
+
+# The public IP address of the Node associated with this Gateway.
+nodeAddress: "0.0.0.0:11201"
+
+# Period in which the message cleanup function executes. Recommended period is on the order of a minute.
+messageTimeout: "60s"
+
+# Path to where the IDF is saved. This is used by the wrapper management script.
+idfPath: "gatewayIDF-1.json"
+
+# The path to the private key associated with the self-signed TLS certificate.
+keyPath: "configurations/gateway-1.key"
+
+# The path to the self-signed TLS certificate for Gateway. Expects PEM format.
+certPath: "configurations/gateway-1.crt"
+
+# The path to the self-signed TLS certificate for Server. Expects PEM format.
+serverCertPath: "configurations/server-1.crt"
+
+# The path to the self-signed TLS certificate for the Permissioning server. Expects PEM format.
+
+permissioningCertPath: "configurations/permissioning.crt"
+
+#location where gateway saves its known round
+knownRoundsPath: "gateway1-knownRound"

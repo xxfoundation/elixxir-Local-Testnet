@@ -1,0 +1,41 @@
+# START YAML ===
+# registration code used for first time registration. Unique. Provided by xx network
+registrationCode: "yiiq"
+useGPU: false
+logLevel: 0
+node:
+  paths:
+    # Path where an error file will be placed in the event of a fatal error
+    # used by the wrapper script
+    errOutput: "errServer-1.txt"
+    # Path where the ID will be stored after the ID is created on first run
+    # used by the wrapper script
+    idf:  "nodeID-1.json"
+    # Path to the self signed TLS cert that the node uses for identification
+    cert: "configurations/server-1.crt"
+    # Path to the private key for the self signed TLS cert
+    key:  "configurations/server-1.key"
+    # Path to where the log will be stored
+    log:  "server-1.log"
+  # port the node will communicate on
+  port: "11201"
+database:
+  name: "cmix_server"
+  username: "cmix"
+  password: ""
+  address: ""
+gateway:
+  paths:
+    # Path to the self signed TLS cert used by the gateway
+    cert: "configurations/gateway-1.crt"
+permissioning:
+  paths:
+    # Path to the self signed TLS cert used by the permissioning. Provided by xx network
+    cert: "configurations/permissioning.crt"
+  # IP Address of the permissioning server, provided by xx network
+  address: "0.0.0.0:11420"
+metrics:
+  # location of stored metrics data. Modification to set to permissioning
+  # server instead of saving will be made at a later date
+  log:  "metrics-server-1.log"
+# === END YAML
