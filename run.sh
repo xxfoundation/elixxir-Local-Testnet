@@ -83,5 +83,20 @@ finish() {
 }
 # Execute finish function on exit
 trap finish EXIT
+
+echo "You can't use the network until rounds run."
+echo "If it doesn't happen after 1 minute, please Ctrl+C"
+echo "and review logs for what went wrong."
+rm rid.txt || true
+touch rid.txt
+echo -n "Waiting for rounds to run..."
+while [ ! -s rid.txt ]; do
+    sleep 1
+    grep -a "RID 1 ReceiveFinishRealtime END" server-3.log > rid.txt || true
+    echo -n "."
+done
+
+echo "\nNetwork rounds have run. You may now attempt to connect."
+
 # Wait until user input to exit
 read -p 'Press enter to exit...'
