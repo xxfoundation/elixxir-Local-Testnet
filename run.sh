@@ -92,7 +92,7 @@ touch rid.txt
 echo -n "Waiting for rounds to run..."
 while [ ! -s rid.txt ]; do
     sleep 1
-    grep -a "RID 1 ReceiveFinishRealtime END" server-3.log > rid.txt || true
+    grep -a "RID 1 ReceiveFinishRealtime END" server-2.log > rid.txt || true
     echo -n "."
 done
 

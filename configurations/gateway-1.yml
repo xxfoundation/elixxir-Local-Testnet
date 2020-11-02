@@ -44,3 +44,6 @@ permissioningCertPath: "configurations/permissioning.crt"
 
 #location where gateway saves its known round
 knownRoundsPath: "gateway1-knownRound"
+
+lastUpdateIdPath: "lastupdateid-1.txt"
+devMode: true

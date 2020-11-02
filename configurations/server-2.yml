@@ -3,6 +3,7 @@
 registrationCode: "vydz"
 useGPU: false
 logLevel: 0
+devMode: true
 node:
   paths:
     # Path where an error file will be placed in the event of a fatal error
