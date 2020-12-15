@@ -5,6 +5,8 @@ rm errServer-*
 rm *.log
 rm roundId.txt
 rm *-knownRound
+rm updateId*
+rm lastupdateid*
 # Globals
 
 # Allow for verbose gRPC logs

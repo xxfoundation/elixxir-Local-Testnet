@@ -16,6 +16,8 @@ node:
     cert: "configurations/server-0.crt"
     # Path to the private key for the self signed TLS cert
     key:  "configurations/server-0.key"
+    #
+    ipListOutput:  "ipList-1.txt"
     # Path to where the log will be stored
     log:  "server-0.log"
   # port the node will communicate on

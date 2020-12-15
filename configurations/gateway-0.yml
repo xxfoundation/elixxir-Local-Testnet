@@ -18,13 +18,13 @@ log: "gateway-0.log"
 Port: 8200
 
 # The local IP address of the Gateway used for internal listening.
-localAddress: "0.0.0.0"
+localAddress: "127.0.0.1"
 
 # The public IP address of the Node associated with this Gateway.
 nodeAddress: "0.0.0.0:11200"
 
 # Period in which the message cleanup function executes. Recommended period is on the order of a minute.
-messageTimeout: "60s"
+messageTimeout: "1800s"
 
 # Path to where the IDF is saved. This is used by the wrapper management script.
 idfPath: "gatewayIDF-0.json"
