@@ -47,3 +47,4 @@ knownRoundsPath: "gateway0-knownRound"
 
 lastUpdateIdPath: "lastupdateid-0.txt"
 devMode: true
+enableGossip: true
