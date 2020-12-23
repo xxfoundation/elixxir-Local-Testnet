@@ -5,7 +5,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     export IP=$(netstat -nr | grep default | grep -v tun | awk '{print $2}')
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     # macOS/iOS/watchOS/tvOS/iPadOS/some Darwin distros
-    export IP=$(ipconfig getifaddr en0)
+    export IP=$(ipconfig getifaddr $(netstat -nr | grep default | head -1 | awk '{print $4}'))
 else
     # Unknown.
     echo I don\'t know how to get an IP from your OS!
