@@ -1,8 +1,5 @@
 # Grab the IP of the NIC inside of our machine so we can 'sed' it into the
 # config files
-export IP=$(netstat -nr | grep default | grep -v tun | awk '{print $2}')
-export IP=$(ipconfig getifaddr en0)
-
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # Linux
     export IP=$(netstat -nr | grep default | grep -v tun | awk '{print $2}')
