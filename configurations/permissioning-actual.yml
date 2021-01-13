@@ -19,7 +19,7 @@ roundIdPath: "roundId.txt"
 updateIdPath: "updateId.txt"
 
 # UDB ID
-udbID: ""
+udbID: "GNdUjncms/5JnRR9PwOJYk9kuhLVpl9yz4MRhbB7smYD"
 udbAddress: "127.0.0.1:18001"
 # Path to UDB public key PEM file
 udbCertPath: "configurations/cmix.rip.crt"

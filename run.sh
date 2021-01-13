@@ -39,17 +39,11 @@ CONFIG_PATH="$(pwd)/configurations"
 
 echo "STARTING SERVERS..."
 
-# Run UDB
-if [[ -z ${runUDB} ]]; then
-    UDBID=$(bin/client init -s results/udbsession -l udbidgen.log --password hello --ndf ndf.json)
-    echo "GENERATED UDB ID: $UDBID"
-    UDBID=$(sed -e 's/[&\\/]/\\&/g; s/$/\\/' -e '$s/\\$//' <<<"$UDBID")
-    cp configurations/permissioning.yml configurations/permissioning-actual.yml
-    sed -i "s/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMD/$UDBID/g" configurations/permissioning-actual.yml
-    echo "UDB: " $!
-else
-    echo "Skipping execution of UDB binary."
-fi
+UDBID=$(binaries/client init -s udbsession -l udbidgen.log --password hello --ndf ndf.json)
+echo "GENERATED UDB ID: $UDBID"
+UDBID=$(sed -e 's/[&\\/]/\\&/g; s/$/\\/' -e '$s/\\$//' <<<"$UDBID")
+cp configurations/permissioning.yml configurations/permissioning-actual.yml
+sed -i "s/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMD/$UDBID/g" configurations/permissioning-actual.yml
 
 # Run Permissioning
 if [[ -z ${runPermissioning} ]]; then
@@ -111,6 +105,17 @@ while [ ! -s rid.txt ]; do
     grep -a "RID 1 ReceiveFinishRealtime END" server-2.log > rid.txt || true
     echo -n "."
 done
+UDBOUT=udb.log
+
+# Run UDB
+if [[ -z ${runUDB} ]]; then
+# Start a user discovery bot server
+    echo "STARTING UDB..."
+    UDBCMD="binaries/udb --logLevel 3 --config udb.yml -l 1 --devMode"
+    $UDBCMD >> $UDBOUT 2>&1 &
+else
+    echo "Skipping execution of UDB binary."
+fi
 
 echo "\nNetwork rounds have run. You may now attempt to connect."
 
