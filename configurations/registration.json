@@ -7,5 +7,6 @@
   "Threshold":     3,
   "RoundTimeout": 120,
   "NodeCleanUpInterval": 3,
+  "ResourceQueueTimeout": 300000,
   "Secure": 		     false
  }

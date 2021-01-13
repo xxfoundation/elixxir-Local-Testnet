@@ -36,27 +36,47 @@ do
 done
 BIN_PATH="$(pwd)/binaries"
 CONFIG_PATH="$(pwd)/configurations"
+
+echo "STARTING SERVERS..."
+
+# Run UDB
+if [[ -z ${runUDB} ]]; then
+    UDBID=$(bin/client init -s results/udbsession -l udbidgen.log --password hello --ndf ndf.json)
+    echo "GENERATED UDB ID: $UDBID"
+    UDBID=$(sed -e 's/[&\\/]/\\&/g; s/$/\\/' -e '$s/\\$//' <<<"$UDBID")
+    cp configurations/permissioning.yml configurations/permissioning-actual.yml
+    sed -i "s/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMD/$UDBID/g" configurations/permissioning-actual.yml
+    echo "UDB: " $!
+else
+    echo "Skipping execution of UDB binary."
+fi
+
+# Run Permissioning
 if [[ -z ${runPermissioning} ]]; then
-    GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/registration.binary \
-    --logLevel 0 -c "$CONFIG_PATH/registration.yml" &> registration_err.log &
+    "$BIN_PATH"/permissioning \
+    --logLevel 2 -c "$CONFIG_PATH/permissioning-actual.yml" &> registration_err.log &
     echo "Permissioning: " $!
 else
     echo "Skipping execution of permissioning binary."
 fi
+
+# Run server
 if [[ -z ${runServer} ]]; then
     for i in $(seq $nodes $END); do
         x=$(($i - 1))
-        GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/server.binary \
-        -l 0 --config "$CONFIG_PATH/server-$x.yml" &> server$x\_err.log &
+        "$BIN_PATH"/server \
+        -l 2 --config "$CONFIG_PATH/server-$x.yml" &> server$x\_err.log &
         echo "Server $x: " $!
     done
 else
     echo "Skipping execution of server binary."
 fi
+
+# Run Gateway
 if [[ -z ${runGateway} ]]; then
     for i in $(seq $nodes $END); do
         x=$(($i - 1))
-        GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/gateway.binary \
+        "$BIN_PATH"/gateway \
         --logLevel 0 --config "$CONFIG_PATH/gateway-$x.yml" &> gw$x\_err.log &
         echo "Gateway $x: " $!
     done
@@ -66,13 +86,7 @@ fi
 
 sleep 4
 
-# fixme: Uncomment when UDB is fixed
-#if [[ -z ${runUDB} ]]; then
-#    "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yml" ${noTls} -l 1 &> udb_error.log &
-#    echo "UDB: " $!
-#else
-#    echo "Skipping execution of UDB binary."
-#fi
+
 # Pipe child PIDs into file
 jobs -p > "pids.tmp"
 finish() {

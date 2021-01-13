@@ -1,6 +1,9 @@
-# Path where UDB will store its logs
-logPath: "udb.log"
-# Path where UDB will store session file
-sessionfile: ""
-# Path to the network definition file
+# UDB Config for E2E Integration test
+logPath: "../udb.log"
+sessionPath: "../udbsession"
+sessionPass: "hello"
+certPath: "configurations/cmix.rip.crt"
 ndfPath: "ndf.json"
+port: "18001"
+keyPath: "configurations/cmix.rip.key"
+permCertPath: "configurations/cmix.rip.crt"
