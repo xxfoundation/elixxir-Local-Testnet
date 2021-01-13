@@ -7,6 +7,8 @@ rm roundId.txt
 rm *-knownRound
 rm updateId*
 rm lastupdateid*
+rm -r udbsession
+rm -r results
 # Globals
 
 # Allow for verbose gRPC logs
@@ -71,28 +73,12 @@ if [[ -z ${runGateway} ]]; then
     for i in $(seq $nodes $END); do
         x=$(($i - 1))
         "$BIN_PATH"/gateway \
-        --logLevel 0 --config "$CONFIG_PATH/gateway-$x.yml" &> gw$x\_err.log &
+        --logLevel 2 --config "$CONFIG_PATH/gateway-$x.yml" &> gw$x\_err.log &
         echo "Gateway $x: " $!
     done
 else
     echo "Skipping execution of gateway binary."
 fi
-
-sleep 4
-
-
-# Pipe child PIDs into file
-jobs -p > "pids.tmp"
-finish() {
-    # Read in and kill all child PIDs
-    for job in $(cat pids.tmp)
-    do
-        echo "KILLING $job"
-        kill -9 "$job" || true
-    done
-}
-# Execute finish function on exit
-trap finish EXIT
 
 echo "You can't use the network until rounds run."
 echo "If it doesn't happen after 1 minute, please Ctrl+C"
@@ -111,13 +97,32 @@ UDBOUT=udb.log
 if [[ -z ${runUDB} ]]; then
 # Start a user discovery bot server
     echo "STARTING UDB..."
-    UDBCMD="binaries/udb --logLevel 3 --config udb.yml -l 1 --devMode"
+    UDBCMD="binaries/udb --logLevel 3 --config configurations/udb.yml -l 1 --devMode"
     $UDBCMD >> $UDBOUT 2>&1 &
+    echo "UDB: " $!
 else
     echo "Skipping execution of UDB binary."
 fi
 
 echo "\nNetwork rounds have run. You may now attempt to connect."
+
+sleep 4
+
+
+# Pipe child PIDs into file
+jobs -p > "pids.tmp"
+finish() {
+    # Read in and kill all child PIDs
+    for job in $(cat pids.tmp)
+    do
+        echo "KILLING $job"
+        kill -9 "$job" || true
+    done
+}
+# Execute finish function on exit
+trap finish EXIT
+
+
 
 # Wait until user input to exit
 read -p 'Press enter to exit...'
