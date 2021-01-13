@@ -7,6 +7,8 @@ rm roundId.txt
 rm *-knownRound
 rm updateId*
 rm lastupdateid*
+rm -r udbsession
+rm -r results
 # Globals
 
 # Allow for verbose gRPC logs
@@ -36,43 +38,77 @@ do
 done
 BIN_PATH="$(pwd)/binaries"
 CONFIG_PATH="$(pwd)/configurations"
+
+echo "STARTING SERVERS..."
+
+UDBID=$(binaries/client init -s udbsession -l udbidgen.log --password hello --ndf ndf.json)
+echo "GENERATED UDB ID: $UDBID"
+UDBID=$(sed -e 's/[&\\/]/\\&/g; s/$/\\/' -e '$s/\\$//' <<<"$UDBID")
+cp configurations/permissioning.yml configurations/permissioning-actual.yml
+sed -i "s/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMD/$UDBID/g" configurations/permissioning-actual.yml
+
+# Run Permissioning
 if [[ -z ${runPermissioning} ]]; then
-    GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/registration.binary \
-    --logLevel 0 -c "$CONFIG_PATH/registration.yml" &> registration_err.log &
+    "$BIN_PATH"/permissioning \
+    --logLevel 2 -c "$CONFIG_PATH/permissioning-actual.yml" &> registration_err.log &
     echo "Permissioning: " $!
 else
     echo "Skipping execution of permissioning binary."
 fi
+
+# Run server
 if [[ -z ${runServer} ]]; then
     for i in $(seq $nodes $END); do
         x=$(($i - 1))
-        GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/server.binary \
-        -l 0 --config "$CONFIG_PATH/server-$x.yml" &> server$x\_err.log &
+        "$BIN_PATH"/server \
+        -l 2 --config "$CONFIG_PATH/server-$x.yml" &> server$x\_err.log &
         echo "Server $x: " $!
     done
 else
     echo "Skipping execution of server binary."
 fi
+
+# Run Gateway
 if [[ -z ${runGateway} ]]; then
     for i in $(seq $nodes $END); do
         x=$(($i - 1))
-        GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info "$BIN_PATH"/gateway.binary \
-        --logLevel 0 --config "$CONFIG_PATH/gateway-$x.yml" &> gw$x\_err.log &
+        "$BIN_PATH"/gateway \
+        --logLevel 2 --config "$CONFIG_PATH/gateway-$x.yml" &> gw$x\_err.log &
         echo "Gateway $x: " $!
     done
 else
     echo "Skipping execution of gateway binary."
 fi
 
+echo "You can't use the network until rounds run."
+echo "If it doesn't happen after 1 minute, please Ctrl+C"
+echo "and review logs for what went wrong."
+rm rid.txt || true
+touch rid.txt
+echo -n "Waiting for rounds to run..."
+while [ ! -s rid.txt ]; do
+    sleep 1
+    grep -a "RID 1 ReceiveFinishRealtime END" server-2.log > rid.txt || true
+    echo -n "."
+done
+UDBOUT=udb.log
+
+# Run UDB
+if [[ -z ${runUDB} ]]; then
+# Start a user discovery bot server
+    echo "STARTING UDB..."
+    UDBCMD="binaries/udb --logLevel 3 --config configurations/udb.yml -l 1 --devMode"
+    $UDBCMD >> $UDBOUT 2>&1 &
+    echo "UDB: " $!
+else
+    echo "Skipping execution of UDB binary."
+fi
+
+echo "\nNetwork rounds have run. You may now attempt to connect."
+
 sleep 4
 
-# fixme: Uncomment when UDB is fixed
-#if [[ -z ${runUDB} ]]; then
-#    "$BIN_PATH"/udb.binary --config "$CONFIG_PATH/udb.yml" ${noTls} -l 1 &> udb_error.log &
-#    echo "UDB: " $!
-#else
-#    echo "Skipping execution of UDB binary."
-#fi
+
 # Pipe child PIDs into file
 jobs -p > "pids.tmp"
 finish() {
@@ -86,19 +122,7 @@ finish() {
 # Execute finish function on exit
 trap finish EXIT
 
-echo "You can't use the network until rounds run."
-echo "If it doesn't happen after 1 minute, please Ctrl+C"
-echo "and review logs for what went wrong."
-rm rid.txt || true
-touch rid.txt
-echo -n "Waiting for rounds to run..."
-while [ ! -s rid.txt ]; do
-    sleep 1
-    grep -a "RID 1 ReceiveFinishRealtime END" server-2.log > rid.txt || true
-    echo -n "."
-done
 
-echo "\nNetwork rounds have run. You may now attempt to connect."
 
 # Wait until user input to exit
 read -p 'Press enter to exit...'

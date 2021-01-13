@@ -19,7 +19,10 @@ roundIdPath: "roundId.txt"
 updateIdPath: "updateId.txt"
 
 # UDB ID
-udbID: 1
+udbID: "GNdUjncms/5JnRR9PwOJYk9kuhLVpl9yz4MRhbB7smYD"
+udbAddress: "127.0.0.1:18001"
+# Path to UDB public key PEM file
+udbCertPath: "configurations/cmix.rip.crt"
 
 # Public address, used in NDF it gives to client
 publicAddress: "0.0.0.0"
@@ -88,6 +91,4 @@ schedulingConfigPath: "configurations/registration.json"
 schedulingKillTimeout: 10s
 # Time the registration waits for rounds to close out and stop (optional)
 closeTimeout: 60s
-
-udbPubKeyPemPath: "configurations/permissioning.crt"
 

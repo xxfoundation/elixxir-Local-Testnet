@@ -16,3 +16,7 @@
 nodeID-*
 gatewayIDF-*
 *-knownRound
+ipList*
+results/
+binaries
+udbsession/
