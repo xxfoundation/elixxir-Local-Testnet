@@ -36,12 +36,6 @@ minGatewayVersion: "1.1.0"
 # The minimum version required of servers to connect
 minServerVersion:  "1.1.0"
 
-# Database connection information
-dbUsername: "cmix"
-dbPassword: ""
-dbName: "cmix_server"
-dbAddress: "0.0.0.0:6969"
-
 # Path to JSON file with list of Node registration codes (in order of network
 # placement)
 RegCodesFilePath: "configurations/regCodes.json"
