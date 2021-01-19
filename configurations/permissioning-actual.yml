@@ -19,7 +19,7 @@ roundIdPath: "roundId.txt"
 updateIdPath: "updateId.txt"
 
 # UDB ID
-udbID: "GNdUjncms/5JnRR9PwOJYk9kuhLVpl9yz4MRhbB7smYD"
+udbID: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMD"
 udbAddress: "127.0.0.1:18001"
 # Path to UDB public key PEM file
 udbCertPath: "configurations/cmix.rip.crt"
@@ -35,12 +35,6 @@ minGatewayVersion: "1.1.0"
 
 # The minimum version required of servers to connect
 minServerVersion:  "1.1.0"
-
-# Database connection information
-dbUsername: "cmix"
-dbPassword: ""
-dbName: "cmix_server"
-dbAddress: "0.0.0.0:6969"
 
 # Path to JSON file with list of Node registration codes (in order of network
 # placement)
