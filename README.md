@@ -22,6 +22,13 @@ details on the flags.
 |linux|l|downloads the Linux binaries|
 |mac|m|downloads the Mac binaries|
 
+A second argument can be provided which changes where the script downloads from.
+By default it downloads from a public bucket which includes release and master builds.
+
+|Flag name|Short flag|Effect|
+|---|---|---|
+|dev downloads|d|downloads from internal CI (see the Team Only section)|
+
 ### `run.sh`
 The script `run.sh` accepts four flags, in any order, that specifies which
 binaries should **not** be run. Refer to the table below for details.
