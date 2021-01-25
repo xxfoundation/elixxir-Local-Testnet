@@ -19,7 +19,7 @@ node:
     #
     ipListOutput:  "ipList-1.txt"
     # Path to where the log will be stored
-    log:  "server-1.log"
+    log:  "results/servers/server-1.log"
   # port the node will communicate on
   port: "11201"
 database:
