@@ -11,7 +11,7 @@ node:
     errOutput: "errServer-2.txt"
     # Path where the ID will be stored after the ID is created on first run
     # used by the wrapper script
-    idf:  "results/servers/misc/nodeID-2.json"
+    idf:  "nodeID-2.json"
     # Path to the self signed TLS cert that the node uses for identification
     cert: "configurations/server-2.crt"
     # Path to the private key for the self signed TLS cert
