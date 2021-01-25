@@ -27,7 +27,7 @@ nodeAddress: "0.0.0.0:11200"
 messageTimeout: "1800s"
 
 # Path to where the IDF is saved. This is used by the wrapper management script.
-idfPath: "results/gateways/gatewayIDF-0.json"
+idfPath: "results/gateways/misc/gatewayIDF-0.json"
 
 # The path to the private key associated with the self-signed TLS certificate.
 keyPath: "configurations/gateway-0.key"
@@ -43,8 +43,8 @@ serverCertPath: "configurations/server-0.crt"
 permissioningCertPath: "configurations/permissioning.crt"
 
 #location where gateway saves its known round
-knownRoundsPath: "results/gateways/gateway0-knownRound"
+knownRoundsPath: "results/gateways/misc/gateway0-knownRound"
 
-lastUpdateIdPath: "results/gateways/lastupdateid-0.txt"
+lastUpdateIdPath: "results/gateways/misc/lastupdateid-0.txt"
 devMode: true
 enableGossip: true
