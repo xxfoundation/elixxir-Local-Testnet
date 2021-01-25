@@ -30,7 +30,9 @@ By default it downloads from a public bucket which includes release and master b
 |dev downloads|d|downloads from internal CI (see the Team Only section)|
 
 ### `run.sh`
-The script `run.sh` initiates the local network. No arguments are taken for this script.
+The script `run.sh` initiates the local network. No arguments are taken for this script. The script will 
+check for successful network operation and output a message to the console. All network logs are outputted 
+to `results/`. 
 
 
 ### Team Only
