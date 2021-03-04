@@ -31,7 +31,7 @@ CONFIG_PATH="$(pwd)/configurations"
 echo "STARTING SERVERS..."
 
 
-UDBID=$(binaries/client init -s results/udbsession -l results/udbidgen.log --password hello --ndf ndf.json)
+UDBID=$(binaries/client init -s results/udbsession -l results/udbidgen.log --password hello --ndf ndf.json --writeContact results/udContact.bin)
 echo "GENERATED UDB ID: $UDBID"
 UDBID=$(sed -e 's/[&\\/]/\\&/g; s/$/\\/' -e '$s/\\$//' <<<"$UDBID")
 cp configurations/permissioning.yml configurations/permissioning-actual.yml
@@ -62,7 +62,10 @@ for i in $(seq $nodes $END); do
     echo "Gateway $x: " $!
 done
 
+#CLIENTCMD="timeout 240s ../binaries/client --password hello --ndf results/ndf.json --waitTimeout 90 --unsafe-channel-creation -v 1
+#   -l results/client45.log -s blob4/blob4 --unsafe --sendid 4 --destid $nid --sendCount 20 --receiveCount 20 -m \"Hello, $nid\""
 
+#CLIENTCMD="timeout 240s binaries/client  --password hello --ndf results/ndf.json --waitTimeout 90 --unsafe-channel-creation -v 1 -l results/client9.log --sendDelay 1000 --sendCount 2 --receiveCount 2 -s blob9/blob9 --sendid 9 --destid 9 -m \"Hi 9->9, with E2E Encryption\""
 
 
 echo "You can't use the network until rounds run."
@@ -86,6 +89,10 @@ echo "UDB: " $!
 
 echo "\nNetwork rounds have run. You may now attempt to connect."
 
+
+sleep 4
+
+
 # Pipe child PIDs into file
 jobs -p > results/serverpids
 finish() {
@@ -97,12 +104,14 @@ finish() {
         echo "KILLING $job"
         kill $job || true
     done
+    sleep 5
 
+    for job in $(cat results/serverpids)
+    do
+        echo "KILL -9 $job"
+        kill -9 $job || true
+    done
 }
-
-sleep 4
-
-
 
 # Execute finish function on exit
 trap finish EXIT

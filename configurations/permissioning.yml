@@ -2,6 +2,12 @@
 # Permissioning Server Configuration
 # ==================================
 
+# Database connection information
+dbUsername: ""
+dbPassword: ""
+dbName: ""
+dbAddress: "0.0.0.0:6969"
+
 # Log message level
 loglevel: 0
 # Path to log file
@@ -12,14 +18,17 @@ ndfOutputPath: "ndf.json"
 # in a team because some scheduling algorithms may require multiple teams worth of nodes at minimum
 minimumNodes: 3
 
+# Disable pinging of Gateway public IP address.
+disableGatewayPing: false
+
 # Path to the file containing the round ID
 roundIdPath: "roundId.txt"
 
 # Path to the file containing the update ID
 updateIdPath: "updateId.txt"
 
-# UDB ID
-udbID: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMD"
+# "Location of the user discovery contact file.
+udContactPath: "results/udContact.bin"
 udbAddress: "127.0.0.1:18001"
 # Path to UDB public key PEM file
 udbCertPath: "configurations/cmix.rip.crt"
@@ -85,4 +94,8 @@ schedulingConfigPath: "configurations/registration.json"
 schedulingKillTimeout: 10s
 # Time the registration waits for rounds to close out and stop (optional)
 closeTimeout: 60s
+
+# Set address space size for ephemeral IDs
+addressSpace: 32
+
 
