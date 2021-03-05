@@ -22,6 +22,7 @@ node:
     log:  "results/servers/server-2.log"
   # port the node will communicate on
   port: "11202"
+  overridePublicIP: "0.0.0.0"
 database:
   name: "cmix_server"
   username: "cmix"

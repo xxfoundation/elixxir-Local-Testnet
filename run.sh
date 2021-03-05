@@ -31,7 +31,7 @@ CONFIG_PATH="$(pwd)/configurations"
 echo "STARTING SERVERS..."
 
 
-UDBID=$(binaries/client init -s results/udbsession -l results/udbidgen.log --password hello --ndf ndf.json)
+UDBID=$(binaries/client init -s results/udbsession -l results/udbidgen.log --password hello --ndf ndf.json --writeContact results/udContact.bin)
 echo "GENERATED UDB ID: $UDBID"
 UDBID=$(sed -e 's/[&\\/]/\\&/g; s/$/\\/' -e '$s/\\$//' <<<"$UDBID")
 cp configurations/permissioning.yml configurations/permissioning-actual.yml
@@ -62,9 +62,6 @@ for i in $(seq $nodes $END); do
     echo "Gateway $x: " $!
 done
 
-
-
-
 echo "You can't use the network until rounds run."
 echo "If it doesn't happen after 1 minute, please Ctrl+C"
 echo "and review logs for what went wrong."
@@ -86,6 +83,10 @@ echo "UDB: " $!
 
 echo "\nNetwork rounds have run. You may now attempt to connect."
 
+
+sleep 4
+
+
 # Pipe child PIDs into file
 jobs -p > results/serverpids
 finish() {
@@ -97,12 +98,14 @@ finish() {
         echo "KILLING $job"
         kill $job || true
     done
+    sleep 5
 
+    for job in $(cat results/serverpids)
+    do
+        echo "KILL -9 $job"
+        kill -9 $job || true
+    done
 }
-
-sleep 4
-
-
 
 # Execute finish function on exit
 trap finish EXIT
