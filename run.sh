@@ -62,12 +62,6 @@ for i in $(seq $nodes $END); do
     echo "Gateway $x: " $!
 done
 
-#CLIENTCMD="timeout 240s ../binaries/client --password hello --ndf results/ndf.json --waitTimeout 90 --unsafe-channel-creation -v 1
-#   -l results/client45.log -s blob4/blob4 --unsafe --sendid 4 --destid $nid --sendCount 20 --receiveCount 20 -m \"Hello, $nid\""
-
-#CLIENTCMD="timeout 240s binaries/client  --password hello --ndf results/ndf.json --waitTimeout 90 --unsafe-channel-creation -v 1 -l results/client9.log --sendDelay 1000 --sendCount 2 --receiveCount 2 -s blob9/blob9 --sendid 9 --destid 9 -m \"Hi 9->9, with E2E Encryption\""
-
-
 echo "You can't use the network until rounds run."
 echo "If it doesn't happen after 1 minute, please Ctrl+C"
 echo "and review logs for what went wrong."

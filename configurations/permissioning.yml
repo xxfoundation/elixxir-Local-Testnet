@@ -19,7 +19,7 @@ ndfOutputPath: "ndf.json"
 minimumNodes: 3
 
 # Disable pinging of Gateway public IP address.
-disableGatewayPing: false
+disableGatewayPing: true
 
 # Path to the file containing the round ID
 roundIdPath: "roundId.txt"
