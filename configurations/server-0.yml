@@ -19,9 +19,10 @@ node:
     #
     ipListOutput:  "ipList-1.txt"
     # Path to where the log will be stored
-    log:  "server-0.log"
+    log:  "results/servers/server-0.log"
   # port the node will communicate on
   port: "11200"
+  overridePublicIP: "0.0.0.0"
 database:
   name: "cmix_server"
   username: "cmix"
@@ -40,5 +41,5 @@ permissioning:
 metrics:
   # location of stored metrics data. Modification to set to permissioning
   # server instead of saving will be made at a later date
-  log:  "metrics-server-0.log"
+  log:  "results/servers/metrics-server-0.log"
 # === END YAML

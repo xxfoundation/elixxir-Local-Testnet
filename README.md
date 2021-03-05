@@ -30,17 +30,10 @@ By default it downloads from a public bucket which includes release and master b
 |dev downloads|d|downloads from internal CI (see the Team Only section)|
 
 ### `run.sh`
-The script `run.sh` accepts four flags, in any order, that specifies which
-binaries should **not** be run. Refer to the table below for details.
+The script `run.sh` initiates the local network. No arguments are taken for this script. The script will 
+check for successful network operation and output a message to the console. All network logs are outputted 
+to `results/`. 
 
-|Long flag|Short flag|Effect|
-|---|---|---|
-|permissioning|p|prevents the execution of the permissioning binary|
-|server|s|prevents the execution of the server binary|
-|gateway|g|prevents the execution of the gateway binary|
-|udb|u|prevents the execution of the UDB binary|
-|notls|N/A|Disables tls from servers, gateways, and permissioning|
-|disablePermissioning|N/A|Disables the registration logic between servers and gateways
 
 ### Team Only
 
