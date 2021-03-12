@@ -44,10 +44,11 @@ publicAddress: "0.0.0.0"
 port: 11420
 
 # The minimum version required of gateways to connect
-minGatewayVersion: "1.1.0"
+minGatewayVersion: "2.0.0"
 
 # The minimum version required of servers to connect
-minServerVersion:  "1.1.0"
+minServerVersion:  "2.0.0"
+minClientVersion: "2.0.0"
 
 # Path to JSON file with list of Node registration codes (in order of network
 # placement)
