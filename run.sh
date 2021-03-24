@@ -35,7 +35,7 @@ UDBID=$(binaries/client init -s results/udbsession -l results/udbidgen.log --pas
 echo "GENERATED UDB ID: $UDBID"
 UDBID=$(sed -e 's/[&\\/]/\\&/g; s/$/\\/' -e '$s/\\$//' <<<"$UDBID")
 cp configurations/permissioning.yml configurations/permissioning-actual.yml
-sed -i "s/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMD/$UDBID/g" configurations/permissioning-actual.yml
+sed -i.bak "s/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMD/$UDBID/g" configurations/permissioning-actual.yml
 
 # Run Permissioning
 "$BIN_PATH"/permissioning \
