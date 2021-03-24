@@ -24,6 +24,7 @@ disableGatewayPing: true
 # Disable pruning of NDF for offline nodes
 # if set to false, network will sleep for five minutes on start
 disableNDFPruning: true
+permissiveIPChecking: true
 
 # Path to the file containing the round ID
 roundIdPath: "roundId.txt"
@@ -35,7 +36,7 @@ updateIdPath: "updateId.txt"
 udContactPath: "results/udContact.bin"
 udbAddress: "127.0.0.1:18001"
 # Path to UDB public key PEM file
-udbCertPath: "configurations/cmix.rip.crt"
+udbCertPath: "configurations/permissioning.crt"
 
 # Public address, used in NDF it gives to client
 publicAddress: "0.0.0.0"
@@ -62,7 +63,7 @@ clientRegCodes:
 
 
 # Client version (will allow all versions with major version 0)
-clientVersion: "1.1.0"
+clientVersion: "2.0.0"
 
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the permissioning server private key file
