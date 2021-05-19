@@ -24,6 +24,11 @@ disableGatewayPing: true
 # Path to the file containing the round ID
 roundIdPath: "roundId.txt"
 
+# Disable pruning of NDF for offline nodes
+# if set to false, network will sleep for five minutes on start
+disableNDFPruning: true
+permissiveIPChecking: true
+
 # Path to the file containing the update ID
 updateIdPath: "updateId.txt"
 
