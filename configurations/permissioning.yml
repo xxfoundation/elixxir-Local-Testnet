@@ -104,4 +104,4 @@ closeTimeout: 60s
 # Set address space size for ephemeral IDs
 addressSpace: 32
 
-
+randomGeoBinning: true
