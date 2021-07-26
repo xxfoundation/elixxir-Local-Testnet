@@ -4,7 +4,7 @@ registrationCode: "yiiq"
 useGPU: false
 logLevel: 0
 devMode: true
-node:
+cmix:
   paths:
     # Path where an error file will be placed in the event of a fatal error
     # used by the wrapper script
@@ -32,7 +32,7 @@ gateway:
   paths:
     # Path to the self signed TLS cert used by the gateway
     cert: "configurations/gateway-1.crt"
-permissioning:
+scheduling:
   paths:
     # Path to the self signed TLS cert used by the permissioning. Provided by xx network
     cert: "configurations/permissioning.crt"
