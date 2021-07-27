@@ -21,13 +21,13 @@ minimumNodes: 3
 # Disable pinging of Gateway public IP address.
 disableGatewayPing: true
 
-# Path to the file containing the round ID
-roundIdPath: "roundId.txt"
-
 # Disable pruning of NDF for offline nodes
 # if set to false, network will sleep for five minutes on start
 disableNDFPruning: true
 permissiveIPChecking: true
+
+# Path to the file containing the round ID
+roundIdPath: "roundId.txt"
 
 # Path to the file containing the update ID
 updateIdPath: "updateId.txt"
@@ -36,7 +36,7 @@ updateIdPath: "updateId.txt"
 udContactPath: "results/udContact.bin"
 udbAddress: "127.0.0.1:18001"
 # Path to UDB public key PEM file
-udbCertPath: "configurations/cmix.rip.crt"
+udbCertPath: "configurations/permissioning.crt"
 
 # Public address, used in NDF it gives to client
 publicAddress: "0.0.0.0"
@@ -49,15 +49,21 @@ minGatewayVersion: "2.0.0"
 
 # The minimum version required of servers to connect
 minServerVersion:  "2.0.0"
-minClientVersion: "2.4.0"
-
+minClientVersion: "2.0.0"
 
 # Path to JSON file with list of Node registration codes (in order of network
 # placement)
 RegCodesFilePath: "configurations/regCodes.json"
 
+# List of client codes to be added to the database (for testing)
+clientRegCodes:
+  - "AAAA"
+  - "BBBB"
+  - "CCCC"
+
+
 # Client version (will allow all versions with major version 0)
-clientVersion: "1.1.0"
+clientVersion: "2.0.0"
 
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the permissioning server private key file
@@ -98,7 +104,4 @@ closeTimeout: 60s
 # Set address space size for ephemeral IDs
 addressSpace: 32
 
-randomGeoBinning: true
 
-# Public address used in NDF to give to client
-registrationAddress: "0.0.0.0:11421"

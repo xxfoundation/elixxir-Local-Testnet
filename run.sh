@@ -43,6 +43,11 @@ sed -i "s/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMD/$UDBID/g" configurations/
 
 echo "Permissioning: " $!
 
+# Run Client Registrar
+"$BIN_PATH"/client-registrar \
+-l 2 -c "$CONFIG_PATH/client-registrar.yml" &> results/clientRegistrar_err.log &
+
+echo "Client Registrar: " $!
 
 # Run server
 for i in $(seq $nodes $END); do

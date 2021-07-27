@@ -56,13 +56,6 @@ minClientVersion: "2.4.0"
 # placement)
 RegCodesFilePath: "configurations/regCodes.json"
 
-# List of client codes to be added to the database (for testing)
-clientRegCodes:
-  - "AAAA"
-  - "BBBB"
-  - "CCCC"
-
-
 # Client version (will allow all versions with major version 0)
 clientVersion: "1.1.0"
 
@@ -107,4 +100,5 @@ addressSpace: 32
 
 randomGeoBinning: true
 
-
+# Public address used in NDF to give to client
+registrationAddress: "0.0.0.0:11421"
