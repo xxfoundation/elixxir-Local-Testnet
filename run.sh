@@ -43,6 +43,11 @@ sed -i.bak "s/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMD/$UDBID/g" configurati
 
 echo "Permissioning: " $!
 
+# Run Client Registrar
+"$BIN_PATH"/client-registrar \
+-l 2 -c "$CONFIG_PATH/client-registrar.yml" &> results/clientRegistrar_err.log &
+
+echo "Client Registrar: " $!
 
 # Run server
 for i in $(seq $nodes $END); do
@@ -58,9 +63,34 @@ for i in $(seq $nodes $END); do
     x=$(($i - 1))
     "$BIN_PATH"/gateway \
     --logLevel 2 --config "$CONFIG_PATH/gateway-$x.yml" &> $GATEWAYLOGS/gw$x\_err.log &
+    PIDVAL=$!
+    echo "Gateway $x -- $PIDVAL"
 
-    echo "Gateway $x: " $!
 done
+
+# Pipe child PIDs into file
+jobs -p > results/serverpids
+finish() {
+    # Read in and kill all child PIDs
+    # NOTE: jobs -p doesn't work in a signal handler
+    echo "STOPPING SERVERS AND GATEWAYS..."
+    for job in $(cat results/serverpids)
+    do
+        echo "KILLING $job"
+        kill $job || true
+    done
+    sleep 5
+
+    for job in $(cat results/serverpids)
+    do
+        echo "KILL -9 $job"
+        kill -9 $job || true
+    done
+}
+
+# Execute finish function on exit
+trap finish EXIT
+trap finish INT
 
 echo "You can't use the network until rounds run."
 echo "If it doesn't happen after 1 minute, please Ctrl+C"
@@ -87,29 +117,7 @@ echo "\nNetwork rounds have run. You may now attempt to connect."
 sleep 4
 
 
-# Pipe child PIDs into file
-jobs -p > results/serverpids
-finish() {
-    # Read in and kill all child PIDs
-    # NOTE: jobs -p doesn't work in a signal handler
-    echo "STOPPING SERVERS AND GATEWAYS..."
-    for job in $(cat results/serverpids)
-    do
-        echo "KILLING $job"
-        kill $job || true
-    done
-    sleep 5
 
-    for job in $(cat results/serverpids)
-    do
-        echo "KILL -9 $job"
-        kill -9 $job || true
-    done
-}
-
-# Execute finish function on exit
-trap finish EXIT
-trap finish INT
 
 
 # Wait until user input to exit
