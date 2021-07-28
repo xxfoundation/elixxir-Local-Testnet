@@ -26,7 +26,7 @@ overridePublicIP: "0.0.0.0"
 localAddress: "0.0.0.0"
 
 # The public IP address of the Node associated with this Gateway.
-nodeAddress: "0.0.0.0:11201"
+cmixAddress: "0.0.0.0:11201"
 
 # Period in which the message cleanup function executes. Recommended period is on the order of a minute.
 messageTimeout: "60s"
@@ -41,11 +41,11 @@ keyPath: "configurations/gateway-1.key"
 certPath: "configurations/gateway-1.crt"
 
 # The path to the self-signed TLS certificate for Server. Expects PEM format.
-serverCertPath: "configurations/server-1.crt"
+cmixCertPath: "configurations/server-1.crt"
 
 # The path to the self-signed TLS certificate for the Permissioning server. Expects PEM format.
 
-permissioningCertPath: "configurations/permissioning.crt"
+schedulingCertPath: "configurations/permissioning.crt"
 
 #location where gateway saves its known round
 knownRoundsPath: "results/gateways/misc/gateway1-knownRound"
