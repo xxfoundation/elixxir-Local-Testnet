@@ -29,6 +29,11 @@ permissiveIPChecking: true
 # Path to the file containing the round ID
 roundIdPath: "roundId.txt"
 
+# Disable pruning of NDF for offline nodes
+# if set to false, network will sleep for five minutes on start
+disableNDFPruning: true
+permissiveIPChecking: true
+
 # Path to the file containing the update ID
 updateIdPath: "updateId.txt"
 
@@ -54,13 +59,6 @@ minClientVersion: "2.0.0"
 # Path to JSON file with list of Node registration codes (in order of network
 # placement)
 RegCodesFilePath: "configurations/regCodes.json"
-
-# List of client codes to be added to the database (for testing)
-clientRegCodes:
-  - "AAAA"
-  - "BBBB"
-  - "CCCC"
-
 
 # Client version (will allow all versions with major version 0)
 clientVersion: "2.0.0"
@@ -105,3 +103,6 @@ closeTimeout: 60s
 addressSpace: 32
 
 randomGeoBinning: true
+
+# Public address used in NDF to give to client
+registrationAddress: "0.0.0.0:11421"
