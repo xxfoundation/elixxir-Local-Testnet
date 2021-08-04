@@ -4,6 +4,7 @@ registrationCode: "yiiq"
 useGPU: false
 logLevel: 0
 devMode: true
+rawPermAddr: true
 cmix:
   paths:
     # Path where an error file will be placed in the event of a fatal error
