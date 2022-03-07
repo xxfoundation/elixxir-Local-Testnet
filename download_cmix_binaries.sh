@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-# DEFAULTS FOR DEVELOPMENT -- do not publish
-if [ "$GITLAB_ACCESS_TOKEN" == "" ]
-then
-    echo "ERROR: SET GITLAB_ACCESS_TOKEN in your environment"
-    exit -1
-fi
-
 PLATFORM=$1
 USEREPO=$2
 
@@ -95,51 +88,60 @@ for BRANCH in $(echo "forcedbranch" $FBRANCH $FBRANCH2 $DEFAULTBRANCH); do
 
     set -x
 
-    # Silently download the UDB binary to the provisioning directory
-    if [ ! -f $download_path/udb ] && [[ "$UDB_URL" != *"forcedbranch"* ]]; then
-        curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/udb" ${UDB_URL}
-    fi
+  # DEFAULTS FOR DEVELOPMENT -- do not publish
+  if [ "$GITLAB_ACCESS_TOKEN" != "" ]
+  then
+          # Silently download the UDB binary to the provisioning directory
+          if [ ! -f $download_path/udb ] && [[ "$UDB_URL" != *"forcedbranch"* ]]; then
+              curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/udb" ${UDB_URL}
+          fi
 
-    # Silently download the Server binary to the provisioning directory
-    if [ ! -f $download_path/server ] && [[ "$SERVER_URL" != *"forcedbranch"* ]]; then
-        curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/server" ${SERVER_URL}
-    fi
+          # Silently download the Server binary to the provisioning directory
+          if [ ! -f $download_path/server ] && [[ "$SERVER_URL" != *"forcedbranch"* ]]; then
+              curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/server" ${SERVER_URL}
+          fi
 
-    # Silently download the Gateway binary to the provisioning directory
-    if [ ! -f $download_path/gateway ] && [[ "$GW_URL" != *"forcedbranch"* ]]; then
-        curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/gateway" ${GW_URL}
-    fi
+          # Silently download the Gateway binary to the provisioning directory
+          if [ ! -f $download_path/gateway ] && [[ "$GW_URL" != *"forcedbranch"* ]]; then
+              curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/gateway" ${GW_URL}
+          fi
 
-    # Silently download the permissioning binary to the provisioning directory
-    if [ ! -f $download_path/permissioning ] && [[ "$PERMISSIONING_URL" != *"forcedbranch"* ]]; then
-        curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/permissioning" ${PERMISSIONING_URL}
-    fi
+          # Silently download the permissioning binary to the provisioning directory
+          if [ ! -f $download_path/permissioning ] && [[ "$PERMISSIONING_URL" != *"forcedbranch"* ]]; then
+              curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/permissioning" ${PERMISSIONING_URL}
+          fi
 
-    # Silently download the permissioning binary to the provisioning directory
-    if [ ! -f $download_path/client ] && [[ "$CLIENT_URL" != *"forcedbranch"* ]]; then
-        curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/client" ${CLIENT_URL}
-    fi
+          # Silently download the permissioning binary to the provisioning directory
+          if [ ! -f $download_path/client ] && [[ "$CLIENT_URL" != *"forcedbranch"* ]]; then
+              curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/client" ${CLIENT_URL}
+          fi
 
 
-    # Silently download the client registrar binary to the provisioning directory
-    if [ ! -f $download_path/client-registrar ] && [[ "$CLIENT_REG_URL" != *"forcedbranch"* ]]; then
-        curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/client-registrar" ${CLIENT_REG_URL}
-    fi
+          # Silently download the client registrar binary to the provisioning directory
+          if [ ! -f $download_path/client-registrar ] && [[ "$CLIENT_REG_URL" != *"forcedbranch"* ]]; then
+              curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/client-registrar" ${CLIENT_REG_URL}
+          fi
+  fi
 
-if [[ $2 == "d" ]]; then
-    # Silently download the Server binary to the provisioning directory
-    if [ ! -f $download_path/server-cuda ] && [[ "$SERVER_GPU_URL" != *"forcedbranch"* ]]; then
-        curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/server-cuda" ${SERVER_GPU_URL}
-    fi
 
-    # Silently download the GPU Library to the provisioning directory
-    if [ ! -f $download_path/libpowmosm75.so ] && [[ "$GPULIB_URL" != *"forcedbranch"* ]]; then
-        curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/libpowmosm75.so" ${GPULIB_URL}
-    fi
-    # Silently download the GPU Library to the provisioning directory
-    if [ ! -f $download_path/libpow.fatbin ] && [[ "$GPULIB2_URL" != *"forcedbranch"* ]]; then
-        curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/libpow.fatbin" ${GPULIB2_URL}
-    fi
+# DEFAULTS FOR DEVELOPMENT -- do not publish
+if [ "$GITLAB_ACCESS_TOKEN" != "" ]
+then
+  if [[ $2 == "d" ]]; then
+      # Silently download the Server binary to the provisioning directory
+      if [ ! -f $download_path/server-cuda ] && [[ "$SERVER_GPU_URL" != *"forcedbranch"* ]]; then
+          curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/server-cuda" ${SERVER_GPU_URL}
+      fi
+
+      # Silently download the GPU Library to the provisioning directory
+      if [ ! -f $download_path/libpowmosm75.so ] && [[ "$GPULIB_URL" != *"forcedbranch"* ]]; then
+          curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/libpowmosm75.so" ${GPULIB_URL}
+      fi
+      # Silently download the GPU Library to the provisioning directory
+      if [ ! -f $download_path/libpow.fatbin ] && [[ "$GPULIB2_URL" != *"forcedbranch"* ]]; then
+          curl -s -f -L -H "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" -o "$download_path/libpow.fatbin" ${GPULIB2_URL}
+      fi
+  fi
 fi
 
     set +x
