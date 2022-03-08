@@ -25,13 +25,13 @@ export GRPC_GO_LOG_SEVERITY_LEVEL=info
 
 nodes=$(ls -1q configurations/server-*.yml | wc -l | xargs)
 
-BIN_PATH="$(pwd)/binaries"
+BIN_PATH="$(pwd)/bin"
 CONFIG_PATH="$(pwd)/configurations"
 
 echo "STARTING SERVERS..."
 
 
-UDBID=$(binaries/client init -s results/udbsession -l results/udbidgen.log --password hello --ndf ndf.json --writeContact results/udContact.bin)
+UDBID=$(bin/client init -s results/udbsession -l results/udbidgen.log --password hello --ndf ndf.json --writeContact results/udContact.bin)
 echo "GENERATED UDB ID: $UDBID"
 UDBID=$(sed -e 's/[&\\/]/\\&/g; s/$/\\/' -e '$s/\\$//' <<<"$UDBID")
 cp configurations/permissioning.yml configurations/permissioning-actual.yml
@@ -107,7 +107,7 @@ done
 # Run UDB
 # Start a user discovery bot server
 echo "STARTING UDB..."
-UDBCMD="binaries/udb --logLevel 3 --config configurations/udb.yml -l 1 --devMode"
+UDBCMD="bin/udb --logLevel 3 --config configurations/udb.yml -l 1 --devMode"
 $UDBCMD >> $UDBOUT 2>&1 &
 echo "UDB: " $!
 

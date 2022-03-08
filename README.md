@@ -9,7 +9,7 @@ installed. Refer to the article [Windows Subsystem for Linux Installation Guide
 for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10) for
 instructions to set it up.
 
-## Flags
+## Scripts
 
 ### `download_cmix_binaries.sh`
 The script `download_cmix_binaries.sh` accepts a single, optional flag that
@@ -27,7 +27,22 @@ By default it downloads from a public bucket which includes release and master b
 
 |Flag name|Short flag|Effect|
 |---|---|---|
-|dev downloads|d|downloads from internal CI (see the Team Only section)|
+|dev downloads|d|downloads from internal CI |
+
+This script will require additional set-up steps, see the Additional Set-Up section for 
+details.
+
+### `download.sh`
+
+The script `download.sh` will download all network related repositories to the working 
+directory. Each repository will be individually built, with the binary being moved
+to the `binaries/` directory, for the run script (`run.sh`) to initiate. This
+will not require additional steps like `download_cmix_binaries.sh`, it will use up more 
+local storage. This will download binaries from release by default.
+
+If you want to build and run custom binaries off of custom branches, you may create a branch in 
+local environment styled as `feature/[INSERT_PROJECT_BRANCH]` and run the download script
+checked out into that feature branch.
 
 ### `run.sh`
 The script `run.sh` initiates the local network. No arguments are taken for this script. The script will 
@@ -35,10 +50,11 @@ check for successful network operation and output a message to the console. All 
 to `results/`. 
 
 
-### Team Only
+### Additional Set-Up 
 
-You will need to add a personal access token to your env vars to download binaries from the CI.
-You can generate one [here](https://gitlab.com/-/profile/personal_access_tokens), giving it the "api" scope.
+You will need to add a personal access token to your environment vars to download binaries via the 
+`download_cmix_binaries.sh`.  You can generate one [here](https://gitlab.com/-/profile/personal_access_tokens),
+giving it the "api" scope.
 Please add the following to your `~/.zshrc` or `~/.bash_profile` depending on your shell
 (You could most likely find out what shell you're using by running `echo $0` in the terminal).
 

@@ -18,5 +18,7 @@ gatewayIDF-*
 *-knownRound
 ipList*
 results/
-binaries
+binaries/
+bin/
+gitlab.com/
 udbsession/
