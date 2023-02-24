@@ -23,7 +23,7 @@ cmix:
     log:  "results/servers/server-1.log"
   # port the node will communicate on
   port: "11201"
-  overridePublicIP: "0.0.0.0"
+  overridePublicIP: "127.0.0.1"
 database:
   name: "cmix_server"
   username: "cmix"
@@ -38,7 +38,7 @@ scheduling:
     # Path to the self signed TLS cert used by the permissioning. Provided by xx network
     cert: "configurations/permissioning.crt"
   # IP Address of the permissioning server, provided by xx network
-  address: "0.0.0.0:11420"
+  address: "127.0.0.1:11420"
 metrics:
   # location of stored metrics data. Modification to set to permissioning
   # server instead of saving will be made at a later date

@@ -45,11 +45,11 @@ publicAddress: "0.0.0.0"
 port: 11420
 
 # The minimum version required of gateways to connect
-minGatewayVersion: "2.0.0"
+minGatewayVersion: "3.0.0"
 
 # The minimum version required of servers to connect
-minServerVersion:  "2.0.0"
-minClientVersion: "2.4.0"
+minServerVersion:  "3.0.0"
+minClientVersion: "4.0.0"
 
 
 # Path to JSON file with list of Node registration codes (in order of network
@@ -57,7 +57,7 @@ minClientVersion: "2.4.0"
 RegCodesFilePath: "configurations/regCodes.json"
 
 # Client version (will allow all versions with major version 0)
-clientVersion: "1.1.0"
+clientVersion: "4.0.0"
 
 # === REQUIRED FOR ENABLING TLS ===
 # Path to the permissioning server private key file
@@ -102,3 +102,13 @@ disableGeoBinning: true
 
 # Public address used in NDF to give to client
 registrationAddress: "0.0.0.0:11421"
+
+# For testing, do not exclude node or gateway IPs which are local to the machine
+allowLocalIPs: true
+# Disable pruning of NDF for offline nodes
+# if set to false, network will sleep for five minutes on start
+disableNDFPruning: true
+permissiveIPChecking: true
+
+fullNdfOutputPath: "results/ndf.json"
+signedPartialNDFOutputPath: "results/signedPartial.txt"
