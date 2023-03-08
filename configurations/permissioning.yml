@@ -114,4 +114,4 @@ fullNdfOutputPath: "results/ndf.json"
 signedPartialNDFOutputPath: "results/signedPartial.txt"
 
 # Path to whitelisted IPs for client ratelimiting
-whitelistedIpAddressesPath: "configurations/whitelist.txt"
+whitelistedIpAddressesPath: "configurations/whitelist.json"
